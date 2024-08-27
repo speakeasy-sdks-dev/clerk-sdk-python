@@ -1,4 +1,4 @@
-speakeasyVersion: 1.355.0
+speakeasyVersion: internal
 sources:
     clerk-openapi:
         sourceNamespace: clerk-openapi

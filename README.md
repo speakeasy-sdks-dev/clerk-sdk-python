@@ -537,7 +537,7 @@ This SDK supports the following security scheme globally:
 | ------------- | ------------- | ------------- |
 | `bearer_auth` | http          | HTTP Bearer   |
 
-To authenticate with the API the `null` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `bearer_auth` parameter must be set when initializing the SDK client instance. For example:
 ```python
 from clerk_backend_api import Clerk
 
@@ -556,8 +556,9 @@ s.misc.get_public_interstitial(frontend_api="frontend-api_1a2b3c4d", publishable
 <!-- Start Debugging [debug] -->
 ## Debugging
 
-To emit debug logs for SDK requests and responses you can pass a logger object directly into your SDK object.
+You can setup your SDK to emit debug logs for SDK requests and responses.
 
+You can pass your own logger class directly into your SDK.
 ```python
 from clerk_backend_api import Clerk
 import logging
@@ -566,6 +567,16 @@ logging.basicConfig(level=logging.DEBUG)
 s = Clerk(debug_logger=logging.getLogger("clerk_backend_api"))
 ```
 <!-- End Debugging [debug] -->
+
+<!-- Start IDE Support [idesupport] -->
+## IDE Support
+
+### PyCharm
+
+Generally, the SDK will work well with most IDEs out of the box. However, when using PyCharm, you can enjoy much better integration with Pydantic by installing an additional plugin.
+
+- [PyCharm Pydantic Plugin](https://docs.pydantic.dev/latest/integrations/pycharm/)
+<!-- End IDE Support [idesupport] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
