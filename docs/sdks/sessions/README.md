@@ -1,6 +1,8 @@
 # Sessions
 (*sessions*)
 
+## Overview
+
 ### Available Operations
 
 * [list](#list) - List all sessions
@@ -46,16 +48,17 @@ if res is not None:
 | `offset`                                                                                                                                  | *Optional[float]*                                                                                                                         | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. | 10                                                                                                                                        |
 | `retries`                                                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                          | :heavy_minus_sign:                                                                                                                        | Configuration to override the default retry behavior of the client.                                                                       |                                                                                                                                           |
 
-
 ### Response
 
 **[List[models.Session]](../../models/.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,422        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## get
 
@@ -86,16 +89,17 @@ if res is not None:
 | `session_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | The ID of the session                                               | sess_1234567890abcdef                                               |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.Session](../../models/session.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,404        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## revoke
 
@@ -127,16 +131,17 @@ if res is not None:
 | `session_id`                                                        | *str*                                                               | :heavy_check_mark:                                                  | The ID of the session                                               | sess_1234567890abcdef                                               |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.Session](../../models/session.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,404        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## ~~verify~~
 
@@ -175,16 +180,17 @@ if res is not None:
 | `request_body`                                                                        | [Optional[models.VerifySessionRequestBody]](../../models/verifysessionrequestbody.md) | :heavy_minus_sign:                                                                    | Parameters.                                                                           |                                                                                       |
 | `retries`                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                      | :heavy_minus_sign:                                                                    | Configuration to override the default retry behavior of the client.                   |                                                                                       |
 
-
 ### Response
 
 **[models.Session](../../models/session.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,404,410    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## create_token_from_template
 
@@ -216,10 +222,10 @@ if res is not None:
 | `template_name`                                                               | *str*                                                                         | :heavy_check_mark:                                                            | The name of the JWT Template defined in your instance (e.g. `custom_hasura`). | custom_hasura                                                                 |
 | `retries`                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)              | :heavy_minus_sign:                                                            | Configuration to override the default retry behavior of the client.           |                                                                               |
 
-
 ### Response
 
 **[models.CreateSessionTokenFromTemplateResponseBody](../../models/createsessiontokenfromtemplateresponsebody.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

@@ -1,6 +1,8 @@
 # Invitations
 (*invitations*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Create an invitation
@@ -44,16 +46,17 @@ if res is not None:
 | `request`                                                                         | [models.CreateInvitationRequestBody](../../models/createinvitationrequestbody.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
 | `retries`                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                  | :heavy_minus_sign:                                                                | Configuration to override the default retry behavior of the client.               |
 
-
 ### Response
 
 **[models.Invitation](../../models/invitation.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,422            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## list
 
@@ -92,15 +95,16 @@ if res is not None:
 | `status`                                                                                                                                  | [Optional[models.ListInvitationsQueryParamStatus]](../../models/listinvitationsqueryparamstatus.md)                                       | :heavy_minus_sign:                                                                                                                        | Filter invitations based on their status                                                                                                  | pending                                                                                                                                   |
 | `retries`                                                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                          | :heavy_minus_sign:                                                                                                                        | Configuration to override the default retry behavior of the client.                                                                       |                                                                                                                                           |
 
-
 ### Response
 
 **[models.ListInvitationsResponse](../../models/listinvitationsresponse.md)**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4xx-5xx         | */*             |
+
 
 ## revoke
 
@@ -134,10 +138,10 @@ if res is not None:
 | `invitation_id`                                                     | *str*                                                               | :heavy_check_mark:                                                  | The ID of the invitation to be revoked                              | inv_123                                                             |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.InvitationRevoked](../../models/invitationrevoked.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
