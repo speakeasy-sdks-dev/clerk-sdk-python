@@ -4,7 +4,7 @@ management:
   docChecksum: d97ee97edfea8f73b38df0fd96c23f3b
   docVersion: v1
   speakeasyVersion: internal
-  generationVersion: 2.404.11
+  generationVersion: 2.404.10
   releaseVersion: 0.5.0-alpha.11
   configChecksum: 1804e08e82b6b13125dccf9edf256490
   repoURL: https://github.com/clerk/clerk-sdk-python.git
