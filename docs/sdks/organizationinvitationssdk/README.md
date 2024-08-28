@@ -1,6 +1,8 @@
 # OrganizationInvitationsSDK
 (*organization_invitations*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Create and send an organization invitation
@@ -60,16 +62,17 @@ if res is not None:
 | `redirect_url`                                                                                                                           | *Optional[str]*                                                                                                                          | :heavy_minus_sign:                                                                                                                       | Optional URL that the invitee will be redirected to once they accept the invitation by clicking the join link in the invitation email.   | https://example.com/welcome                                                                                                              |
 | `retries`                                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                         | :heavy_minus_sign:                                                                                                                       | Configuration to override the default retry behavior of the client.                                                                      |                                                                                                                                          |
 
-
 ### Response
 
 **[models.OrganizationInvitation](../../models/organizationinvitation.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,403,404,422    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## list
 
@@ -114,16 +117,17 @@ if res is not None:
 | `status`                                                                                                                                  | [Optional[models.ListOrganizationInvitationsQueryParamStatus]](../../models/listorganizationinvitationsqueryparamstatus.md)               | :heavy_minus_sign:                                                                                                                        | Filter organization invitations based on their status                                                                                     | pending                                                                                                                                   |
 | `retries`                                                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                          | :heavy_minus_sign:                                                                                                                        | Configuration to override the default retry behavior of the client.                                                                       |                                                                                                                                           |
 
-
 ### Response
 
 **[models.ListOrganizationInvitationsResponse](../../models/listorganizationinvitationsresponse.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,404            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## create_bulk
 
@@ -176,16 +180,17 @@ if res is not None:
 | `request_body`                                                      | List[[models.RequestBody](../../models/requestbody.md)]             | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.OrganizationInvitations](../../models/organizationinvitations.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,403,404,422    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## ~~list_pending~~
 
@@ -230,16 +235,17 @@ if res is not None:
 | `offset`                                                                                                                                  | *Optional[float]*                                                                                                                         | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. | 10                                                                                                                                        |
 | `retries`                                                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                          | :heavy_minus_sign:                                                                                                                        | Configuration to override the default retry behavior of the client.                                                                       |                                                                                                                                           |
 
-
 ### Response
 
 **[models.ListPendingOrganizationInvitationsResponse](../../models/listpendingorganizationinvitationsresponse.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,404            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## get
 
@@ -271,16 +277,17 @@ if res is not None:
 | `invitation_id`                                                     | *str*                                                               | :heavy_check_mark:                                                  | The organization invitation ID.                                     | inv_987654321                                                       |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.OrganizationInvitation](../../models/organizationinvitation.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,403,404        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## revoke
 
@@ -317,10 +324,10 @@ if res is not None:
 | `requesting_user_id`                                                                          | *str*                                                                                         | :heavy_check_mark:                                                                            | The ID of the user that revokes the invitation.<br/>Must be an administrator in the organization. | usr_12345                                                                                     |
 | `retries`                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                              | :heavy_minus_sign:                                                                            | Configuration to override the default retry behavior of the client.                           |                                                                                               |
 
-
 ### Response
 
 **[models.OrganizationInvitation](../../models/organizationinvitation.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
