@@ -1,6 +1,8 @@
 # Clients
 (*clients*)
 
+## Overview
+
 ### Available Operations
 
 * [~~list~~](#list) - List all clients :warning: **Deprecated**
@@ -24,7 +26,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.clients.list(limit=20, offset=10)
 
 if res is not None:
@@ -34,7 +35,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -46,16 +46,17 @@ if res is not None:
 | `offset`                                                                                                                                  | *Optional[float]*                                                                                                                         | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. | 10                                                                                                                                        |
 | `retries`                                                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                          | :heavy_minus_sign:                                                                                                                        | Configuration to override the default retry behavior of the client.                                                                       |                                                                                                                                           |
 
-
 ### Response
 
 **[models.GetClientListResponse](../../models/getclientlistresponse.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,410,422    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## verify
 
@@ -69,7 +70,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.clients.verify(request={
     "token": "jwt_token_example",
@@ -88,16 +88,17 @@ if res is not None:
 | `request`                                                                 | [models.VerifyClientRequestBody](../../models/verifyclientrequestbody.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 | `retries`                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)          | :heavy_minus_sign:                                                        | Configuration to override the default retry behavior of the client.       |
 
-
 ### Response
 
 **[models.Client](../../models/client.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,404        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## get
 
@@ -111,7 +112,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.clients.get(client_id="cli_123456789")
 
@@ -128,10 +128,10 @@ if res is not None:
 | `client_id`                                                         | *str*                                                               | :heavy_check_mark:                                                  | Client ID.                                                          | cli_123456789                                                       |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.Client](../../models/client.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

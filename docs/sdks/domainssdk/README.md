@@ -1,6 +1,8 @@
 # DomainsSDK
 (*domains*)
 
+## Overview
+
 ### Available Operations
 
 * [list](#list) - List all instance domains
@@ -22,7 +24,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.domains.list()
 
 if res is not None:
@@ -37,15 +38,16 @@ if res is not None:
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
 ### Response
 
 **[models.Domains](../../models/domains.md)**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4xx-5xx         | */*             |
+
 
 ## add
 
@@ -63,7 +65,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.domains.add(request={
     "name": "example.com",
@@ -84,16 +85,17 @@ if res is not None:
 | `request`                                                           | [models.AddDomainRequestBody](../../models/adddomainrequestbody.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
 ### Response
 
 **[models.Domain](../../models/domain.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,402,422        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## delete
 
@@ -108,7 +110,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.domains.delete(domain_id="domain_12345")
 
@@ -125,16 +126,17 @@ if res is not None:
 | `domain_id`                                                            | *str*                                                                  | :heavy_check_mark:                                                     | The ID of the domain that will be deleted. Must be a satellite domain. | domain_12345                                                           |
 | `retries`                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)       | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |                                                                        |
 
-
 ### Response
 
 **[models.DeletedObject](../../models/deletedobject.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 403,404            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## update
 
@@ -156,7 +158,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.domains.update(domain_id="domain_12345", name="example.com", proxy_url="http://proxy.example.com")
 
 if res is not None:
@@ -174,10 +175,10 @@ if res is not None:
 | `proxy_url`                                                                                                                                                                                    | *OptionalNullable[str]*                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                             | The full URL of the proxy that will forward requests to Clerk's Frontend API.<br/>Can only be updated for production instances.                                                                | http://proxy.example.com                                                                                                                                                                       |
 | `retries`                                                                                                                                                                                      | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                             | Configuration to override the default retry behavior of the client.                                                                                                                            |                                                                                                                                                                                                |
 
-
 ### Response
 
 **[models.Domain](../../models/domain.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

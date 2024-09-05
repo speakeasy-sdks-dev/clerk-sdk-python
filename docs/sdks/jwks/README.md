@@ -1,6 +1,8 @@
 # Jwks
 (*jwks*)
 
+## Overview
+
 ### Available Operations
 
 * [get](#get) - Retrieve the JSON Web Key Set of the instance
@@ -17,7 +19,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 s.jwks.get()
 

@@ -1,6 +1,8 @@
 # OrganizationInvitationsSDK
 (*organization_invitations*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Create and send an organization invitation
@@ -38,7 +40,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organization_invitations.create(organization_id="org_12345", email_address="user@example.com", inviter_user_id="user_67890", role="admin", public_metadata={}, private_metadata={}, redirect_url="https://example.com/welcome")
 
 if res is not None:
@@ -60,16 +61,17 @@ if res is not None:
 | `redirect_url`                                                                                                                           | *Optional[str]*                                                                                                                          | :heavy_minus_sign:                                                                                                                       | Optional URL that the invitee will be redirected to once they accept the invitation by clicking the join link in the invitation email.   | https://example.com/welcome                                                                                                              |
 | `retries`                                                                                                                                | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                         | :heavy_minus_sign:                                                                                                                       | Configuration to override the default retry behavior of the client.                                                                      |                                                                                                                                          |
 
-
 ### Response
 
 **[models.OrganizationInvitation](../../models/organizationinvitation.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,403,404,422    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## list
 
@@ -90,7 +92,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organization_invitations.list(organization_id="org_12345", limit=20, offset=10, status=clerk_backend_api.ListOrganizationInvitationsQueryParamStatus.PENDING)
 
 if res is not None:
@@ -100,7 +101,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -114,16 +114,17 @@ if res is not None:
 | `status`                                                                                                                                  | [Optional[models.ListOrganizationInvitationsQueryParamStatus]](../../models/listorganizationinvitationsqueryparamstatus.md)               | :heavy_minus_sign:                                                                                                                        | Filter organization invitations based on their status                                                                                     | pending                                                                                                                                   |
 | `retries`                                                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                          | :heavy_minus_sign:                                                                                                                        | Configuration to override the default retry behavior of the client.                                                                       |                                                                                                                                           |
 
-
 ### Response
 
 **[models.ListOrganizationInvitationsResponse](../../models/listorganizationinvitationsresponse.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,404            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## create_bulk
 
@@ -150,7 +151,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organization_invitations.create_bulk(organization_id="org_12345", request_body=[
     {
         "email_address": "newmember@example.com",
@@ -176,16 +176,17 @@ if res is not None:
 | `request_body`                                                      | List[[models.RequestBody](../../models/requestbody.md)]             | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.OrganizationInvitations](../../models/organizationinvitations.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,403,404,422    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## ~~list_pending~~
 
@@ -207,7 +208,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organization_invitations.list_pending(organization_id="org_12345", limit=20, offset=10)
 
 if res is not None:
@@ -217,7 +217,6 @@ if res is not None:
         res = res.Next()
         if res is None:
             break
-
 
 ```
 
@@ -230,16 +229,17 @@ if res is not None:
 | `offset`                                                                                                                                  | *Optional[float]*                                                                                                                         | :heavy_minus_sign:                                                                                                                        | Skip the first `offset` results when paginating.<br/>Needs to be an integer greater or equal to zero.<br/>To be used in conjunction with `limit`. | 10                                                                                                                                        |
 | `retries`                                                                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                                          | :heavy_minus_sign:                                                                                                                        | Configuration to override the default retry behavior of the client.                                                                       |                                                                                                                                           |
 
-
 ### Response
 
 **[models.ListPendingOrganizationInvitationsResponse](../../models/listpendingorganizationinvitationsresponse.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,404            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## get
 
@@ -253,7 +253,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.organization_invitations.get(organization_id="org_123456789", invitation_id="inv_987654321")
 
@@ -271,16 +270,17 @@ if res is not None:
 | `invitation_id`                                                     | *str*                                                               | :heavy_check_mark:                                                  | The organization invitation ID.                                     | inv_987654321                                                       |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.OrganizationInvitation](../../models/organizationinvitation.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,403,404        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## revoke
 
@@ -299,7 +299,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organization_invitations.revoke(organization_id="org_123456", invitation_id="inv_123456", requesting_user_id="usr_12345")
 
 if res is not None:
@@ -317,10 +316,10 @@ if res is not None:
 | `requesting_user_id`                                                                          | *str*                                                                                         | :heavy_check_mark:                                                                            | The ID of the user that revokes the invitation.<br/>Must be an administrator in the organization. | usr_12345                                                                                     |
 | `retries`                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                              | :heavy_minus_sign:                                                                            | Configuration to override the default retry behavior of the client.                           |                                                                                               |
 
-
 ### Response
 
 **[models.OrganizationInvitation](../../models/organizationinvitation.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

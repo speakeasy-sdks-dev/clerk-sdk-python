@@ -1,6 +1,8 @@
 # BetaFeatures
 (*beta_features*)
 
+## Overview
+
 ### Available Operations
 
 * [update_instance_auth_config](#update_instance_auth_config) - Update instance settings
@@ -19,7 +21,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.beta_features.update_instance_auth_config(request={
     "restricted_to_allowlist": False,
@@ -43,16 +44,17 @@ if res is not None:
 | `request`                                                                                         | [models.UpdateInstanceAuthConfigRequestBody](../../models/updateinstanceauthconfigrequestbody.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 | `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |
 
-
 ### Response
 
 **[models.InstanceSettings](../../models/instancesettings.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 402,422            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## ~~update_production_instance_domain~~
 
@@ -72,7 +74,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 s.beta_features.update_production_instance_domain(request={
     "home_url": "https://www.example.com",
@@ -96,6 +97,7 @@ s.beta_features.update_production_instance_domain(request={
 | models.ClerkErrors | 400,422            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
 
+
 ## change_production_instance_domain
 
 Change the domain of a production instance.
@@ -112,7 +114,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 s.beta_features.change_production_instance_domain(request={
     "home_url": "https://www.newdomain.com",
