@@ -647,6 +647,7 @@ s = Clerk(
 res = s.users.update_metadata(user_id="user_123456789", request_body={
     "public_metadata": {
         "key": "<value>",
+        "key1": "<value>",
     },
     "private_metadata": {},
     "unsafe_metadata": {},

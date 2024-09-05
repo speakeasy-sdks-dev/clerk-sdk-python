@@ -155,7 +155,7 @@ res = s.jwt_templates.update(template_id="<value>", request_body={
     "claims": {},
     "lifetime": 8574.78,
     "allowed_clock_skew": 245.55,
-    "custom_signing_key": False,
+    "custom_signing_key": True,
     "signing_algorithm": "<value>",
     "signing_key": "<value>",
 })
