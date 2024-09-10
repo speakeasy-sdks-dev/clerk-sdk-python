@@ -1,6 +1,8 @@
 # Misc
 (*misc*)
 
+## Overview
+
 ### Available Operations
 
 * [get_public_interstitial](#get_public_interstitial) - Returns the markup for the interstitial page
@@ -16,7 +18,6 @@ It is used by Clerk SDKs when the user's authentication state cannot be immediat
 from clerk_backend_api import Clerk
 
 s = Clerk()
-
 
 s.misc.get_public_interstitial(frontend_api="frontend-api_1a2b3c4d", publishable_key="pub_1a2b3c4d")
 

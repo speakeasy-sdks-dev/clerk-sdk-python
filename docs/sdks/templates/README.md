@@ -1,6 +1,8 @@
 # Templates
 (*templates*)
 
+## Overview
+
 ### Available Operations
 
 * [list](#list) - List all templates
@@ -25,7 +27,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.templates.list(template_type=clerk_backend_api.TemplateType.EMAIL)
 
 if res is not None:
@@ -41,16 +42,17 @@ if res is not None:
 | `template_type`                                                     | [models.TemplateType](../../models/templatetype.md)                 | :heavy_check_mark:                                                  | The type of templates to list (email or SMS)                        | email                                                               |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[List[models.Template]](../../models/.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,422        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## get
 
@@ -65,7 +67,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.get(template_type=clerk_backend_api.PathParamTemplateType.EMAIL, slug="welcome-email")
 
@@ -83,16 +84,17 @@ if res is not None:
 | `slug`                                                                | *str*                                                                 | :heavy_check_mark:                                                    | The slug (i.e. machine-friendly name) of the template to retrieve     | welcome-email                                                         |
 | `retries`                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)      | :heavy_minus_sign:                                                    | Configuration to override the default retry behavior of the client.   |                                                                       |
 
-
 ### Response
 
 **[models.Template](../../models/template.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,404        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## upsert
 
@@ -107,7 +109,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.upsert(template_type=clerk_backend_api.UpsertTemplatePathParamTemplateType.SMS, slug="verification-code", request_body={
     "name": "Verification Code",
@@ -134,16 +135,17 @@ if res is not None:
 | `request_body`                                                                                    | [Optional[models.UpsertTemplateRequestBody]](../../models/upserttemplaterequestbody.md)           | :heavy_minus_sign:                                                                                | N/A                                                                                               |                                                                                                   |
 | `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |                                                                                                   |
 
-
 ### Response
 
 **[models.Template](../../models/template.md)**
+
 ### Errors
 
 | Error Object            | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | models.ClerkErrors      | 400,401,402,403,404,422 | application/json        |
 | models.SDKError         | 4xx-5xx                 | */*                     |
+
 
 ## revert
 
@@ -158,7 +160,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.revert(template_type=clerk_backend_api.RevertTemplatePathParamTemplateType.EMAIL, slug="welcome-email")
 
@@ -176,16 +177,17 @@ if res is not None:
 | `slug`                                                                                            | *str*                                                                                             | :heavy_check_mark:                                                                                | The slug of the template to revert                                                                | welcome-email                                                                                     |
 | `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |                                                                                                   |
 
-
 ### Response
 
 **[models.Template](../../models/template.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,402,404    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## preview
 
@@ -199,7 +201,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.preview(template_type="email", slug="welcome-email", request_body={
     "subject": "Welcome to our service!",
@@ -223,16 +224,17 @@ if res is not None:
 | `request_body`                                                                            | [Optional[models.PreviewTemplateRequestBody]](../../models/previewtemplaterequestbody.md) | :heavy_minus_sign:                                                                        | Required parameters                                                                       |                                                                                           |
 | `retries`                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                          | :heavy_minus_sign:                                                                        | Configuration to override the default retry behavior of the client.                       |                                                                                           |
 
-
 ### Response
 
 **[models.PreviewTemplateResponseBody](../../models/previewtemplateresponsebody.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,404,422    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## toggle_delivery
 
@@ -249,7 +251,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.toggle_delivery(template_type=clerk_backend_api.ToggleTemplateDeliveryPathParamTemplateType.EMAIL, slug="welcome-email", request_body={
     "delivered_by_clerk": True,
@@ -270,10 +271,10 @@ if res is not None:
 | `request_body`                                                                                                    | [Optional[models.ToggleTemplateDeliveryRequestBody]](../../models/toggletemplatedeliveryrequestbody.md)           | :heavy_minus_sign:                                                                                                | N/A                                                                                                               |                                                                                                                   |
 | `retries`                                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                  | :heavy_minus_sign:                                                                                                | Configuration to override the default retry behavior of the client.                                               |                                                                                                                   |
 
-
 ### Response
 
 **[models.Template](../../models/template.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

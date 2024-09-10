@@ -1,6 +1,8 @@
 # InstanceSettingsSDK
 (*instance_settings*)
 
+## Overview
+
 ### Available Operations
 
 * [update](#update) - Update instance settings
@@ -19,7 +21,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 s.instance_settings.update(request={
     "test_mode": True,
@@ -54,6 +55,7 @@ s.instance_settings.update(request={
 | models.ClerkErrors | 422                | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
 
+
 ## update_restrictions
 
 Updates the restriction settings of an instance
@@ -66,7 +68,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.instance_settings.update_restrictions(request={
     "allowlist": False,
@@ -89,16 +90,17 @@ if res is not None:
 | `request`                                                                                             | [models.UpdateInstanceRestrictionsRequestBody](../../models/updateinstancerestrictionsrequestbody.md) | :heavy_check_mark:                                                                                    | The request object to use for the request.                                                            |
 | `retries`                                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                      | :heavy_minus_sign:                                                                                    | Configuration to override the default retry behavior of the client.                                   |
 
-
 ### Response
 
 **[models.InstanceRestrictions](../../models/instancerestrictions.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 402,422            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## update_organization_settings
 
@@ -112,7 +114,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.instance_settings.update_organization_settings(request={
     "enabled": True,
@@ -140,10 +141,10 @@ if res is not None:
 | `request`                                                                                                             | [models.UpdateInstanceOrganizationSettingsRequestBody](../../models/updateinstanceorganizationsettingsrequestbody.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 | `retries`                                                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                                      | :heavy_minus_sign:                                                                                                    | Configuration to override the default retry behavior of the client.                                                   |
 
-
 ### Response
 
 **[models.OrganizationSettings](../../models/organizationsettings.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

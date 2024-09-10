@@ -10,19 +10,26 @@ from typing_extensions import Annotated
 
 class RevertTemplatePathParamTemplateType(str, Enum):
     r"""The type of template to revert"""
+
     EMAIL = "email"
     SMS = "sms"
+
 
 class RevertTemplateRequestTypedDict(TypedDict):
     template_type: RevertTemplatePathParamTemplateType
     r"""The type of template to revert"""
     slug: str
     r"""The slug of the template to revert"""
-    
+
 
 class RevertTemplateRequest(BaseModel):
-    template_type: Annotated[RevertTemplatePathParamTemplateType, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    template_type: Annotated[
+        RevertTemplatePathParamTemplateType,
+        FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
+    ]
     r"""The type of template to revert"""
-    slug: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    slug: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The slug of the template to revert"""
-    

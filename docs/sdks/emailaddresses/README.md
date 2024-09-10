@@ -1,6 +1,8 @@
 # EmailAddresses
 (*email_addresses*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Create an email address
@@ -20,7 +22,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.email_addresses.create(request={
     "user_id": "user_12345",
@@ -42,16 +43,17 @@ if res is not None:
 | `request`                                                                             | [models.CreateEmailAddressRequestBody](../../models/createemailaddressrequestbody.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
 | `retries`                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                      | :heavy_minus_sign:                                                                    | Configuration to override the default retry behavior of the client.                   |
 
-
 ### Response
 
 **[models.EmailAddress](../../models/emailaddress.md)**
+
 ### Errors
 
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.ClerkErrors  | 400,401,403,404,422 | application/json    |
 | models.SDKError     | 4xx-5xx             | */*                 |
+
 
 ## get
 
@@ -65,7 +67,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.email_addresses.get(email_address_id="email_address_id_example")
 
@@ -82,16 +83,17 @@ if res is not None:
 | `email_address_id`                                                  | *str*                                                               | :heavy_check_mark:                                                  | The ID of the email address to retrieve                             | email_address_id_example                                            |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.EmailAddress](../../models/emailaddress.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,403,404    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## delete
 
@@ -105,7 +107,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.email_addresses.delete(email_address_id="email_address_id_example")
 
@@ -122,16 +123,17 @@ if res is not None:
 | `email_address_id`                                                  | *str*                                                               | :heavy_check_mark:                                                  | The ID of the email address to delete                               | email_address_id_example                                            |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.DeletedObject](../../models/deletedobject.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,401,403,404    | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## update
 
@@ -145,7 +147,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.email_addresses.update(email_address_id="email_address_id_example", request_body={
     "verified": False,
@@ -166,10 +167,10 @@ if res is not None:
 | `request_body`                                                                                  | [Optional[models.UpdateEmailAddressRequestBody]](../../models/updateemailaddressrequestbody.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |                                                                                                 |
 | `retries`                                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |                                                                                                 |
 
-
 ### Response
 
 **[models.EmailAddress](../../models/emailaddress.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

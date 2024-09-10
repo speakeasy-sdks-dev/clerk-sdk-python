@@ -13,12 +13,13 @@ class Type(str, Enum):
     OAUTH_DISCORD = "oauth_discord"
     OAUTH_APPLE = "oauth_apple"
 
+
 class IdentificationLinkTypedDict(TypedDict):
     type: Type
     id: str
-    
+
 
 class IdentificationLink(BaseModel):
     type: Type
+
     id: str
-    

@@ -2,7 +2,13 @@
 
 from __future__ import annotations
 from .identificationlink import IdentificationLink, IdentificationLinkTypedDict
-from clerk_backend_api.types import BaseModel, Nullable, OptionalNullable, UNSET, UNSET_SENTINEL
+from clerk_backend_api.types import (
+    BaseModel,
+    Nullable,
+    OptionalNullable,
+    UNSET,
+    UNSET_SENTINEL,
+)
 from enum import Enum
 from pydantic import model_serializer
 from typing import List, Optional, TypedDict, Union
@@ -10,10 +16,10 @@ from typing_extensions import NotRequired
 
 
 class EmailAddressObject(str, Enum):
-    r"""String representing the object's type. Objects of the same type share the same value.
+    r"""String representing the object's type. Objects of the same type share the same value."""
 
-    """
     EMAIL_ADDRESS = "email_address"
+
 
 class OauthVerificationStatus(str, Enum):
     UNVERIFIED = "unverified"
@@ -22,6 +28,7 @@ class OauthVerificationStatus(str, Enum):
     EXPIRED = "expired"
     TRANSFERABLE = "transferable"
 
+
 class OauthVerificationStrategy(str, Enum):
     OAUTH_GOOGLE = "oauth_google"
     OAUTH_MOCK = "oauth_mock"
@@ -29,13 +36,14 @@ class OauthVerificationStrategy(str, Enum):
     FROM_OAUTH_DISCORD = "from_oauth_discord"
     OAUTH_APPLE = "oauth_apple"
 
+
 class ErrorMetaTypedDict(TypedDict):
     pass
-    
+
 
 class ErrorMeta(BaseModel):
     pass
-    
+
 
 class ErrorClerkErrorTypedDict(TypedDict):
     message: str
@@ -43,15 +51,25 @@ class ErrorClerkErrorTypedDict(TypedDict):
     code: str
     meta: NotRequired[ErrorMetaTypedDict]
     clerk_trace_id: NotRequired[str]
-    
+
 
 class ErrorClerkError(BaseModel):
     message: str
+
     long_message: str
+
     code: str
+
     meta: Optional[ErrorMeta] = None
+
     clerk_trace_id: Optional[str] = None
-    
+
+
+ErrorTypedDict = ErrorClerkErrorTypedDict
+
+
+Error = ErrorClerkError
+
 
 class OauthTypedDict(TypedDict):
     status: OauthVerificationStatus
@@ -60,16 +78,21 @@ class OauthTypedDict(TypedDict):
     external_verification_redirect_url: NotRequired[str]
     error: NotRequired[Nullable[ErrorTypedDict]]
     attempts: NotRequired[Nullable[int]]
-    
+
 
 class Oauth(BaseModel):
     status: OauthVerificationStatus
+
     strategy: OauthVerificationStrategy
+
     expire_at: Nullable[int]
+
     external_verification_redirect_url: Optional[str] = None
+
     error: OptionalNullable[Error] = UNSET
+
     attempts: OptionalNullable[int] = UNSET
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["external_verification_redirect_url", "error", "attempts"]
@@ -83,9 +106,13 @@ class Oauth(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -95,28 +122,33 @@ class Oauth(BaseModel):
                 m[k] = val
 
         return m
-        
+
 
 class AdminVerificationStatus(str, Enum):
     VERIFIED = "verified"
 
+
 class VerificationStrategy(str, Enum):
     ADMIN = "admin"
     FROM_OAUTH_DISCORD = "from_oauth_discord"
+
 
 class AdminTypedDict(TypedDict):
     status: AdminVerificationStatus
     strategy: VerificationStrategy
     attempts: NotRequired[Nullable[int]]
     expire_at: NotRequired[Nullable[int]]
-    
+
 
 class Admin(BaseModel):
     status: AdminVerificationStatus
+
     strategy: VerificationStrategy
+
     attempts: OptionalNullable[int] = UNSET
+
     expire_at: OptionalNullable[int] = UNSET
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["attempts", "expire_at"]
@@ -130,9 +162,13 @@ class Admin(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -142,13 +178,14 @@ class Admin(BaseModel):
                 m[k] = val
 
         return m
-        
+
 
 class VerificationStatus(str, Enum):
     UNVERIFIED = "unverified"
     VERIFIED = "verified"
     FAILED = "failed"
     EXPIRED = "expired"
+
 
 class Strategy(str, Enum):
     PHONE_CODE = "phone_code"
@@ -158,19 +195,23 @@ class Strategy(str, Enum):
     FROM_OAUTH_GOOGLE = "from_oauth_google"
     FROM_OAUTH_APPLE = "from_oauth_apple"
 
+
 class OtpTypedDict(TypedDict):
     status: VerificationStatus
     strategy: Strategy
     attempts: Nullable[int]
     expire_at: Nullable[int]
-    
+
 
 class Otp(BaseModel):
     status: VerificationStatus
+
     strategy: Strategy
+
     attempts: Nullable[int]
+
     expire_at: Nullable[int]
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = []
@@ -184,9 +225,13 @@ class Otp(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -196,7 +241,13 @@ class Otp(BaseModel):
                 m[k] = val
 
         return m
-        
+
+
+VerificationTypedDict = Union[OtpTypedDict, AdminTypedDict, OauthTypedDict]
+
+
+Verification = Union[Otp, Admin, Oauth]
+
 
 class EmailAddressTypedDict(TypedDict):
     object: EmailAddressObject
@@ -216,27 +267,34 @@ class EmailAddressTypedDict(TypedDict):
 
     """
     id: NotRequired[str]
-    
+
 
 class EmailAddress(BaseModel):
     object: EmailAddressObject
     r"""String representing the object's type. Objects of the same type share the same value.
 
     """
+
     email_address: str
+
     reserved: bool
+
     verification: Nullable[Verification]
+
     linked_to: List[IdentificationLink]
+
     created_at: int
     r"""Unix timestamp of creation
 
     """
+
     updated_at: int
     r"""Unix timestamp of creation
 
     """
+
     id: Optional[str] = None
-    
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
         optional_fields = ["id"]
@@ -250,9 +308,13 @@ class EmailAddress(BaseModel):
         for n, f in self.model_fields.items():
             k = f.alias or n
             val = serialized.get(k)
+            serialized.pop(k, None)
 
             optional_nullable = k in optional_fields and k in nullable_fields
-            is_set = (self.__pydantic_fields_set__.intersection({n}) or k in null_default_fields) # pylint: disable=no-member
+            is_set = (
+                self.__pydantic_fields_set__.intersection({n})
+                or k in null_default_fields
+            )  # pylint: disable=no-member
 
             if val is not None and val != UNSET_SENTINEL:
                 m[k] = val
@@ -262,16 +324,3 @@ class EmailAddress(BaseModel):
                 m[k] = val
 
         return m
-        
-
-ErrorTypedDict = ErrorClerkErrorTypedDict
-
-
-Error = ErrorClerkError
-
-
-VerificationTypedDict = Union[OtpTypedDict, AdminTypedDict, OauthTypedDict]
-
-
-Verification = Union[Otp, Admin, Oauth]
-
