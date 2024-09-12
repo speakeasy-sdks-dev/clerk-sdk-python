@@ -31,25 +31,44 @@ class ListOrganizationsRequestTypedDict(TypedDict):
     If you don't use `+` or `-`, then `+` is implied.
     Defaults to `-created_at`.
     """
-    
+
 
 class ListOrganizationsRequest(BaseModel):
-    limit: Annotated[Optional[float], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 10
+    limit: Annotated[
+        Optional[float],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 10
     r"""Applies a limit to the number of results returned.
     Can be used for paginating the results together with `offset`.
     """
-    offset: Annotated[Optional[float], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 0
+
+    offset: Annotated[
+        Optional[float],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 0
     r"""Skip the first `offset` results when paginating.
     Needs to be an integer greater or equal to zero.
     To be used in conjunction with `limit`.
     """
-    include_members_count: Annotated[Optional[bool], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    include_members_count: Annotated[
+        Optional[bool],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""Flag to denote whether the member counts of each organization should be included in the response or not."""
-    query: Annotated[Optional[str], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    query: Annotated[
+        Optional[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""Returns organizations with ID, name, or slug that match the given query.
     Uses exact match for organization ID and partial match for name and slug.
     """
-    order_by: Annotated[Optional[str], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = "-created_at"
+
+    order_by: Annotated[
+        Optional[str],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = "-created_at"
     r"""Allows to return organizations in a particular order.
     At the moment, you can order the returned organizations either by their `name`, `created_at` or `members_count`.
     In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by.
@@ -57,4 +76,3 @@ class ListOrganizationsRequest(BaseModel):
     If you don't use `+` or `-`, then `+` is implied.
     Defaults to `-created_at`.
     """
-    

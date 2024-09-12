@@ -1,6 +1,8 @@
 # SignUps
 (*sign_ups*)
 
+## Overview
+
 ### Available Operations
 
 * [update](#update) - Update a sign-up
@@ -17,7 +19,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.sign_ups.update(id="signup_1234567890abcdef", request_body={
     "custom_action": False,
@@ -38,10 +39,10 @@ if res is not None:
 | `request_body`                                                                      | [Optional[models.UpdateSignUpRequestBody]](../../models/updatesignuprequestbody.md) | :heavy_minus_sign:                                                                  | N/A                                                                                 |                                                                                     |
 | `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |                                                                                     |
 
-
 ### Response
 
 **[models.SignUp](../../models/signup.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

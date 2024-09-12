@@ -1,6 +1,8 @@
 # ActorTokens
 (*actor_tokens*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Create actor token
@@ -19,7 +21,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.actor_tokens.create(request={
     "user_id": "user_1a2b3c",
@@ -43,16 +44,17 @@ if res is not None:
 | `request`                                                                         | [models.CreateActorTokenRequestBody](../../models/createactortokenrequestbody.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
 | `retries`                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                  | :heavy_minus_sign:                                                                | Configuration to override the default retry behavior of the client.               |
 
-
 ### Response
 
 **[models.ActorToken](../../models/actortoken.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 400,402,422        | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## revoke
 
@@ -66,7 +68,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.actor_tokens.revoke(actor_token_id="act_tok_abcdefghijk")
 
@@ -83,10 +84,10 @@ if res is not None:
 | `actor_token_id`                                                    | *str*                                                               | :heavy_check_mark:                                                  | The ID of the actor token to be revoked.                            | act_tok_abcdefghijk                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.ActorToken](../../models/actortoken.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

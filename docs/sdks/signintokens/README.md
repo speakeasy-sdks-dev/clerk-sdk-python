@@ -1,6 +1,8 @@
 # SignInTokens
 (*sign_in_tokens*)
 
+## Overview
+
 ### Available Operations
 
 * [create](#create) - Create sign-in token
@@ -21,7 +23,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.sign_in_tokens.create(request={
     "user_id": "user_12345",
     "expires_in_seconds": 2592000,
@@ -40,16 +41,17 @@ if res is not None:
 | `request`                                                                           | [models.CreateSignInTokenRequestBody](../../models/createsignintokenrequestbody.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
 | `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |
 
-
 ### Response
 
 **[models.SignInToken](../../models/signintoken.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
 | models.ClerkErrors | 404,422            | application/json   |
 | models.SDKError    | 4xx-5xx            | */*                |
+
 
 ## revoke
 
@@ -63,7 +65,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.sign_in_tokens.revoke(sign_in_token_id="tok_test_1234567890")
 
@@ -80,10 +81,10 @@ if res is not None:
 | `sign_in_token_id`                                                  | *str*                                                               | :heavy_check_mark:                                                  | The ID of the sign-in token to be revoked                           | tok_test_1234567890                                                 |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
-
 ### Response
 
 **[models.SignInToken](../../models/signintoken.md)**
+
 ### Errors
 
 | Error Object       | Status Code        | Content Type       |

@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class DeleteBlocklistIdentifierRequestTypedDict(TypedDict):
     identifier_id: str
     r"""The ID of the identifier to delete from the block-list"""
-    
+
 
 class DeleteBlocklistIdentifierRequest(BaseModel):
-    identifier_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    identifier_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the identifier to delete from the block-list"""
-    

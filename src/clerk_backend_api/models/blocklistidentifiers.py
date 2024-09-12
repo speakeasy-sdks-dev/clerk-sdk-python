@@ -12,12 +12,12 @@ class BlocklistIdentifiersTypedDict(TypedDict):
     r"""Total number of blocklist identifiers
 
     """
-    
+
 
 class BlocklistIdentifiers(BaseModel):
     data: List[BlocklistIdentifier]
+
     total_count: int
     r"""Total number of blocklist identifiers
 
     """
-    
