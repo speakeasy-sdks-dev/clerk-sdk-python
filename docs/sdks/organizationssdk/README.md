@@ -308,7 +308,7 @@ s = Clerk(
 res = s.organizations.upload_logo(organization_id="org_12345", request_body={
     "uploader_user_id": "user_67890",
     "file": {
-        "file_name": "your_file_here",
+        "file_name": "example.file",
         "content": open("example.file", "rb"),
         "content_type": "<value>",
     },

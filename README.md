@@ -362,7 +362,7 @@ s = Clerk(
 )
 
 res = s.users.set_profile_image(user_id="usr_test123", file={
-    "file_name": "your_file_here",
+    "file_name": "example.file",
     "content": open("example.file", "rb"),
     "content_type": "<value>",
 })
