@@ -11,11 +11,12 @@ class OrganizationsSDK(BaseSDK):
     def list(
         self,
         *,
-        limit: Optional[int] = 10,
-        offset: Optional[int] = 0,
-        include_members_count: Optional[bool] = None,
-        query: Optional[str] = None,
-        order_by: Optional[str] = "-created_at",
+        request: Optional[
+            Union[
+                models.ListOrganizationsRequest,
+                models.ListOrganizationsRequestTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -27,11 +28,7 @@ class OrganizationsSDK(BaseSDK):
         The organizations are ordered by descending creation date.
         Most recent organizations will be returned first.
 
-        :param limit: Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`.
-        :param offset: Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`.
-        :param include_members_count: Flag to denote whether the member counts of each organization should be included in the response or not.
-        :param query: Returns organizations with ID, name, or slug that match the given query. Uses exact match for organization ID and partial match for name and slug.
-        :param order_by: Allows to return organizations in a particular order. At the moment, you can order the returned organizations either by their `name`, `created_at` or `members_count`. In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by. For example, if you want organizations to be returned in descending order according to their `created_at` property, you can use `-created_at`. If you don't use `+` or `-`, then `+` is implied. Defaults to `-created_at`.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -44,13 +41,9 @@ class OrganizationsSDK(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.ListOrganizationsRequest(
-            limit=limit,
-            offset=offset,
-            include_members_count=include_members_count,
-            query=query,
-            order_by=order_by,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.ListOrganizationsRequest)
+        request = cast(models.ListOrganizationsRequest, request)
 
         req = self.build_request(
             method="GET",
@@ -108,11 +101,12 @@ class OrganizationsSDK(BaseSDK):
     async def list_async(
         self,
         *,
-        limit: Optional[int] = 10,
-        offset: Optional[int] = 0,
-        include_members_count: Optional[bool] = None,
-        query: Optional[str] = None,
-        order_by: Optional[str] = "-created_at",
+        request: Optional[
+            Union[
+                models.ListOrganizationsRequest,
+                models.ListOrganizationsRequestTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -124,11 +118,7 @@ class OrganizationsSDK(BaseSDK):
         The organizations are ordered by descending creation date.
         Most recent organizations will be returned first.
 
-        :param limit: Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`.
-        :param offset: Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`.
-        :param include_members_count: Flag to denote whether the member counts of each organization should be included in the response or not.
-        :param query: Returns organizations with ID, name, or slug that match the given query. Uses exact match for organization ID and partial match for name and slug.
-        :param order_by: Allows to return organizations in a particular order. At the moment, you can order the returned organizations either by their `name`, `created_at` or `members_count`. In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by. For example, if you want organizations to be returned in descending order according to their `created_at` property, you can use `-created_at`. If you don't use `+` or `-`, then `+` is implied. Defaults to `-created_at`.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -141,13 +131,9 @@ class OrganizationsSDK(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.ListOrganizationsRequest(
-            limit=limit,
-            offset=offset,
-            include_members_count=include_members_count,
-            query=query,
-            order_by=order_by,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.ListOrganizationsRequest)
+        request = cast(models.ListOrganizationsRequest, request)
 
         req = self.build_request_async(
             method="GET",
@@ -1224,12 +1210,11 @@ class OrganizationsSDK(BaseSDK):
         self,
         *,
         organization_id: str,
-        request_body: Optional[
-            Union[
-                models.UploadOrganizationLogoRequestBody,
-                models.UploadOrganizationLogoRequestBodyTypedDict,
-            ]
-        ] = None,
+        uploader_user_id: str,
+        file: Union[
+            models.UploadOrganizationLogoFile,
+            models.UploadOrganizationLogoFileTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1242,7 +1227,8 @@ class OrganizationsSDK(BaseSDK):
         Only the following file content types are supported: `image/jpeg`, `image/png`, `image/gif`, `image/webp`, `image/x-icon`, `image/vnd.microsoft.icon`.
 
         :param organization_id: The ID of the organization for which to upload a logo
-        :param request_body:
+        :param uploader_user_id: The ID of the user that will be credited with the image upload.
+        :param file:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1257,8 +1243,9 @@ class OrganizationsSDK(BaseSDK):
 
         request = models.UploadOrganizationLogoRequest(
             organization_id=organization_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UploadOrganizationLogoRequestBody]
+            request_body=models.UploadOrganizationLogoRequestBody(
+                uploader_user_id=uploader_user_id,
+                file=utils.get_pydantic_model(file, models.UploadOrganizationLogoFile),
             ),
         )
 
@@ -1330,12 +1317,11 @@ class OrganizationsSDK(BaseSDK):
         self,
         *,
         organization_id: str,
-        request_body: Optional[
-            Union[
-                models.UploadOrganizationLogoRequestBody,
-                models.UploadOrganizationLogoRequestBodyTypedDict,
-            ]
-        ] = None,
+        uploader_user_id: str,
+        file: Union[
+            models.UploadOrganizationLogoFile,
+            models.UploadOrganizationLogoFileTypedDict,
+        ],
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1348,7 +1334,8 @@ class OrganizationsSDK(BaseSDK):
         Only the following file content types are supported: `image/jpeg`, `image/png`, `image/gif`, `image/webp`, `image/x-icon`, `image/vnd.microsoft.icon`.
 
         :param organization_id: The ID of the organization for which to upload a logo
-        :param request_body:
+        :param uploader_user_id: The ID of the user that will be credited with the image upload.
+        :param file:
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1363,8 +1350,9 @@ class OrganizationsSDK(BaseSDK):
 
         request = models.UploadOrganizationLogoRequest(
             organization_id=organization_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UploadOrganizationLogoRequestBody]
+            request_body=models.UploadOrganizationLogoRequestBody(
+                uploader_user_id=uploader_user_id,
+                file=utils.get_pydantic_model(file, models.UploadOrganizationLogoFile),
             ),
         )
 

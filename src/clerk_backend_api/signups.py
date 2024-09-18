@@ -4,7 +4,7 @@ from .basesdk import BaseSDK
 from clerk_backend_api import models, utils
 from clerk_backend_api._hooks import HookContext
 from clerk_backend_api.types import OptionalNullable, UNSET
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 
 class SignUps(BaseSDK):
@@ -12,11 +12,8 @@ class SignUps(BaseSDK):
         self,
         *,
         id: str,
-        request_body: Optional[
-            Union[
-                models.UpdateSignUpRequestBody, models.UpdateSignUpRequestBodyTypedDict
-            ]
-        ] = None,
+        custom_action: Optional[bool] = None,
+        external_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -26,7 +23,8 @@ class SignUps(BaseSDK):
         Update the sign-up with the given ID
 
         :param id: The ID of the sign-up to update
-        :param request_body:
+        :param custom_action: Specifies whether a custom action has run for this sign-up attempt. This is important when your instance has been configured to require a custom action to run before converting a sign-up into a user. After executing any external business logic you deem necessary, you can mark the sign-up as ready-to-convert by setting `custom_action` to `true`.
+        :param external_id: The ID of the guest attempting to sign up as used in your external systems or your previous authentication solution. This will be copied to the resulting user when the sign-up is completed.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -41,8 +39,9 @@ class SignUps(BaseSDK):
 
         request = models.UpdateSignUpRequest(
             id=id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdateSignUpRequestBody]
+            request_body=models.UpdateSignUpRequestBody(
+                custom_action=custom_action,
+                external_id=external_id,
             ),
         )
 
@@ -110,11 +109,8 @@ class SignUps(BaseSDK):
         self,
         *,
         id: str,
-        request_body: Optional[
-            Union[
-                models.UpdateSignUpRequestBody, models.UpdateSignUpRequestBodyTypedDict
-            ]
-        ] = None,
+        custom_action: Optional[bool] = None,
+        external_id: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -124,7 +120,8 @@ class SignUps(BaseSDK):
         Update the sign-up with the given ID
 
         :param id: The ID of the sign-up to update
-        :param request_body:
+        :param custom_action: Specifies whether a custom action has run for this sign-up attempt. This is important when your instance has been configured to require a custom action to run before converting a sign-up into a user. After executing any external business logic you deem necessary, you can mark the sign-up as ready-to-convert by setting `custom_action` to `true`.
+        :param external_id: The ID of the guest attempting to sign up as used in your external systems or your previous authentication solution. This will be copied to the resulting user when the sign-up is completed.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -139,8 +136,9 @@ class SignUps(BaseSDK):
 
         request = models.UpdateSignUpRequest(
             id=id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdateSignUpRequestBody]
+            request_body=models.UpdateSignUpRequestBody(
+                custom_action=custom_action,
+                external_id=external_id,
             ),
         )
 

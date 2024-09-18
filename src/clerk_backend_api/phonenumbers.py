@@ -540,12 +540,9 @@ class PhoneNumbers(BaseSDK):
         self,
         *,
         phone_number_id: str,
-        request_body: Optional[
-            Union[
-                models.UpdatePhoneNumberRequestBody,
-                models.UpdatePhoneNumberRequestBodyTypedDict,
-            ]
-        ] = None,
+        verified: OptionalNullable[bool] = UNSET,
+        primary: OptionalNullable[bool] = UNSET,
+        reserved_for_second_factor: OptionalNullable[bool] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -555,7 +552,9 @@ class PhoneNumbers(BaseSDK):
         Updates a phone number
 
         :param phone_number_id: The ID of the phone number to update
-        :param request_body:
+        :param verified: The phone number will be marked as verified.
+        :param primary: Set this phone number as the primary phone number for the user.
+        :param reserved_for_second_factor: Set this phone number as reserved for multi-factor authentication. The phone number must also be verified. If there are no other reserved second factors, the phone number will be set as the default second factor.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -570,8 +569,10 @@ class PhoneNumbers(BaseSDK):
 
         request = models.UpdatePhoneNumberRequest(
             phone_number_id=phone_number_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdatePhoneNumberRequestBody]
+            request_body=models.UpdatePhoneNumberRequestBody(
+                verified=verified,
+                primary=primary,
+                reserved_for_second_factor=reserved_for_second_factor,
             ),
         )
 
@@ -641,12 +642,9 @@ class PhoneNumbers(BaseSDK):
         self,
         *,
         phone_number_id: str,
-        request_body: Optional[
-            Union[
-                models.UpdatePhoneNumberRequestBody,
-                models.UpdatePhoneNumberRequestBodyTypedDict,
-            ]
-        ] = None,
+        verified: OptionalNullable[bool] = UNSET,
+        primary: OptionalNullable[bool] = UNSET,
+        reserved_for_second_factor: OptionalNullable[bool] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -656,7 +654,9 @@ class PhoneNumbers(BaseSDK):
         Updates a phone number
 
         :param phone_number_id: The ID of the phone number to update
-        :param request_body:
+        :param verified: The phone number will be marked as verified.
+        :param primary: Set this phone number as the primary phone number for the user.
+        :param reserved_for_second_factor: Set this phone number as reserved for multi-factor authentication. The phone number must also be verified. If there are no other reserved second factors, the phone number will be set as the default second factor.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -671,8 +671,10 @@ class PhoneNumbers(BaseSDK):
 
         request = models.UpdatePhoneNumberRequest(
             phone_number_id=phone_number_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdatePhoneNumberRequestBody]
+            request_body=models.UpdatePhoneNumberRequestBody(
+                verified=verified,
+                primary=primary,
+                reserved_for_second_factor=reserved_for_second_factor,
             ),
         )
 

@@ -3,8 +3,8 @@
 from .basesdk import BaseSDK
 from clerk_backend_api import models, utils
 from clerk_backend_api._hooks import HookContext
-from clerk_backend_api.types import OptionalNullable, UNSET
-from typing import Any, List, Optional, Union
+from clerk_backend_api.types import BaseModel, OptionalNullable, UNSET
+from typing import Any, List, Optional, Union, cast
 from typing_extensions import deprecated
 
 
@@ -12,11 +12,9 @@ class Sessions(BaseSDK):
     def list(
         self,
         *,
-        client_id: Optional[str] = None,
-        user_id: Optional[str] = None,
-        status: Optional[models.QueryParamStatus] = None,
-        limit: Optional[int] = 10,
-        offset: Optional[int] = 0,
+        request: Optional[
+            Union[models.GetSessionListRequest, models.GetSessionListRequestTypedDict]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -28,11 +26,7 @@ class Sessions(BaseSDK):
         **Deprecation Notice (2024-01-01):** All parameters were initially considered optional, however
         moving forward at least one of `client_id` or `user_id` parameters should be provided.
 
-        :param client_id: List sessions for the given client
-        :param user_id: List sessions for the given user
-        :param status: Filter sessions by the provided status
-        :param limit: Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`.
-        :param offset: Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -45,13 +39,9 @@ class Sessions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.GetSessionListRequest(
-            client_id=client_id,
-            user_id=user_id,
-            status=status,
-            limit=limit,
-            offset=offset,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.GetSessionListRequest)
+        request = cast(models.GetSessionListRequest, request)
 
         req = self.build_request(
             method="GET",
@@ -109,11 +99,9 @@ class Sessions(BaseSDK):
     async def list_async(
         self,
         *,
-        client_id: Optional[str] = None,
-        user_id: Optional[str] = None,
-        status: Optional[models.QueryParamStatus] = None,
-        limit: Optional[int] = 10,
-        offset: Optional[int] = 0,
+        request: Optional[
+            Union[models.GetSessionListRequest, models.GetSessionListRequestTypedDict]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -125,11 +113,7 @@ class Sessions(BaseSDK):
         **Deprecation Notice (2024-01-01):** All parameters were initially considered optional, however
         moving forward at least one of `client_id` or `user_id` parameters should be provided.
 
-        :param client_id: List sessions for the given client
-        :param user_id: List sessions for the given user
-        :param status: Filter sessions by the provided status
-        :param limit: Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`.
-        :param offset: Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -142,13 +126,9 @@ class Sessions(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.GetSessionListRequest(
-            client_id=client_id,
-            user_id=user_id,
-            status=status,
-            limit=limit,
-            offset=offset,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.GetSessionListRequest)
+        request = cast(models.GetSessionListRequest, request)
 
         req = self.build_request_async(
             method="GET",
@@ -540,12 +520,7 @@ class Sessions(BaseSDK):
         self,
         *,
         session_id: str,
-        request_body: Optional[
-            Union[
-                models.VerifySessionRequestBody,
-                models.VerifySessionRequestBodyTypedDict,
-            ]
-        ] = None,
+        token: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -558,7 +533,7 @@ class Sessions(BaseSDK):
         For more details on how networkless verification works, refer to our [Session Tokens documentation](https://clerk.com/docs/backend-requests/resources/session-tokens).
 
         :param session_id: The ID of the session
-        :param request_body: Parameters.
+        :param token: The JWT that is sent via the `__session` cookie from your frontend. Note: this JWT must be associated with the supplied session ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -573,8 +548,8 @@ class Sessions(BaseSDK):
 
         request = models.VerifySessionRequest(
             session_id=session_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.VerifySessionRequestBody]
+            request_body=models.VerifySessionRequestBody(
+                token=token,
             ),
         )
 
@@ -647,12 +622,7 @@ class Sessions(BaseSDK):
         self,
         *,
         session_id: str,
-        request_body: Optional[
-            Union[
-                models.VerifySessionRequestBody,
-                models.VerifySessionRequestBodyTypedDict,
-            ]
-        ] = None,
+        token: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -665,7 +635,7 @@ class Sessions(BaseSDK):
         For more details on how networkless verification works, refer to our [Session Tokens documentation](https://clerk.com/docs/backend-requests/resources/session-tokens).
 
         :param session_id: The ID of the session
-        :param request_body: Parameters.
+        :param token: The JWT that is sent via the `__session` cookie from your frontend. Note: this JWT must be associated with the supplied session ID.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -680,8 +650,8 @@ class Sessions(BaseSDK):
 
         request = models.VerifySessionRequest(
             session_id=session_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.VerifySessionRequestBody]
+            request_body=models.VerifySessionRequestBody(
+                token=token,
             ),
         )
 

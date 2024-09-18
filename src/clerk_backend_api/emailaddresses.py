@@ -540,12 +540,8 @@ class EmailAddresses(BaseSDK):
         self,
         *,
         email_address_id: str,
-        request_body: Optional[
-            Union[
-                models.UpdateEmailAddressRequestBody,
-                models.UpdateEmailAddressRequestBodyTypedDict,
-            ]
-        ] = None,
+        verified: OptionalNullable[bool] = UNSET,
+        primary: OptionalNullable[bool] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -555,7 +551,8 @@ class EmailAddresses(BaseSDK):
         Updates an email address.
 
         :param email_address_id: The ID of the email address to update
-        :param request_body:
+        :param verified: The email address will be marked as verified.
+        :param primary: Set this email address as the primary email address for the user.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -570,8 +567,9 @@ class EmailAddresses(BaseSDK):
 
         request = models.UpdateEmailAddressRequest(
             email_address_id=email_address_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdateEmailAddressRequestBody]
+            request_body=models.UpdateEmailAddressRequestBody(
+                verified=verified,
+                primary=primary,
             ),
         )
 
@@ -641,12 +639,8 @@ class EmailAddresses(BaseSDK):
         self,
         *,
         email_address_id: str,
-        request_body: Optional[
-            Union[
-                models.UpdateEmailAddressRequestBody,
-                models.UpdateEmailAddressRequestBodyTypedDict,
-            ]
-        ] = None,
+        verified: OptionalNullable[bool] = UNSET,
+        primary: OptionalNullable[bool] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -656,7 +650,8 @@ class EmailAddresses(BaseSDK):
         Updates an email address.
 
         :param email_address_id: The ID of the email address to update
-        :param request_body:
+        :param verified: The email address will be marked as verified.
+        :param primary: Set this email address as the primary email address for the user.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -671,8 +666,9 @@ class EmailAddresses(BaseSDK):
 
         request = models.UpdateEmailAddressRequest(
             email_address_id=email_address_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdateEmailAddressRequestBody]
+            request_body=models.UpdateEmailAddressRequestBody(
+                verified=verified,
+                primary=primary,
             ),
         )
 

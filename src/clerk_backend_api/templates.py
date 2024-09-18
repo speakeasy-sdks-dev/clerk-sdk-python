@@ -4,7 +4,7 @@ from .basesdk import BaseSDK
 from clerk_backend_api import models, utils
 from clerk_backend_api._hooks import HookContext
 from clerk_backend_api.types import OptionalNullable, UNSET
-from typing import Any, List, Optional, Union
+from typing import Any, List, Optional
 
 
 class Templates(BaseSDK):
@@ -349,12 +349,13 @@ class Templates(BaseSDK):
         *,
         template_type: models.UpsertTemplatePathParamTemplateType,
         slug: str,
-        request_body: Optional[
-            Union[
-                models.UpsertTemplateRequestBody,
-                models.UpsertTemplateRequestBodyTypedDict,
-            ]
-        ] = None,
+        name: Optional[str] = None,
+        subject: OptionalNullable[str] = UNSET,
+        markup: OptionalNullable[str] = UNSET,
+        body: Optional[str] = None,
+        delivered_by_clerk: OptionalNullable[bool] = UNSET,
+        from_email_name: Optional[str] = None,
+        reply_to_email_name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -365,7 +366,13 @@ class Templates(BaseSDK):
 
         :param template_type: The type of template to update
         :param slug: The slug of the template to update
-        :param request_body:
+        :param name: The user-friendly name of the template
+        :param subject: The email subject. Applicable only to email templates.
+        :param markup: The editor markup used to generate the body of the template
+        :param body: The template body before variable interpolation
+        :param delivered_by_clerk: Whether Clerk should deliver emails or SMS messages based on the current template
+        :param from_email_name: The local part of the From email address that will be used for emails. For example, in the address 'hello@example.com', the local part is 'hello'. Applicable only to email templates.
+        :param reply_to_email_name: The local part of the Reply To email address that will be used for emails. For example, in the address 'hello@example.com', the local part is 'hello'. Applicable only to email templates.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -381,8 +388,14 @@ class Templates(BaseSDK):
         request = models.UpsertTemplateRequest(
             template_type=template_type,
             slug=slug,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpsertTemplateRequestBody]
+            request_body=models.UpsertTemplateRequestBody(
+                name=name,
+                subject=subject,
+                markup=markup,
+                body=body,
+                delivered_by_clerk=delivered_by_clerk,
+                from_email_name=from_email_name,
+                reply_to_email_name=reply_to_email_name,
             ),
         )
 
@@ -453,12 +466,13 @@ class Templates(BaseSDK):
         *,
         template_type: models.UpsertTemplatePathParamTemplateType,
         slug: str,
-        request_body: Optional[
-            Union[
-                models.UpsertTemplateRequestBody,
-                models.UpsertTemplateRequestBodyTypedDict,
-            ]
-        ] = None,
+        name: Optional[str] = None,
+        subject: OptionalNullable[str] = UNSET,
+        markup: OptionalNullable[str] = UNSET,
+        body: Optional[str] = None,
+        delivered_by_clerk: OptionalNullable[bool] = UNSET,
+        from_email_name: Optional[str] = None,
+        reply_to_email_name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -469,7 +483,13 @@ class Templates(BaseSDK):
 
         :param template_type: The type of template to update
         :param slug: The slug of the template to update
-        :param request_body:
+        :param name: The user-friendly name of the template
+        :param subject: The email subject. Applicable only to email templates.
+        :param markup: The editor markup used to generate the body of the template
+        :param body: The template body before variable interpolation
+        :param delivered_by_clerk: Whether Clerk should deliver emails or SMS messages based on the current template
+        :param from_email_name: The local part of the From email address that will be used for emails. For example, in the address 'hello@example.com', the local part is 'hello'. Applicable only to email templates.
+        :param reply_to_email_name: The local part of the Reply To email address that will be used for emails. For example, in the address 'hello@example.com', the local part is 'hello'. Applicable only to email templates.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -485,8 +505,14 @@ class Templates(BaseSDK):
         request = models.UpsertTemplateRequest(
             template_type=template_type,
             slug=slug,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpsertTemplateRequestBody]
+            request_body=models.UpsertTemplateRequestBody(
+                name=name,
+                subject=subject,
+                markup=markup,
+                body=body,
+                delivered_by_clerk=delivered_by_clerk,
+                from_email_name=from_email_name,
+                reply_to_email_name=reply_to_email_name,
             ),
         )
 
@@ -731,12 +757,10 @@ class Templates(BaseSDK):
         *,
         template_type: str,
         slug: str,
-        request_body: Optional[
-            Union[
-                models.PreviewTemplateRequestBody,
-                models.PreviewTemplateRequestBodyTypedDict,
-            ]
-        ] = None,
+        subject: OptionalNullable[str] = UNSET,
+        body: Optional[str] = None,
+        from_email_name: Optional[str] = None,
+        reply_to_email_name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -747,7 +771,10 @@ class Templates(BaseSDK):
 
         :param template_type: The type of template to preview
         :param slug: The slug of the template to preview
-        :param request_body: Required parameters
+        :param subject: The email subject. Applicable only to email templates.
+        :param body: The template body before variable interpolation
+        :param from_email_name: The local part of the From email address that will be used for emails. For example, in the address 'hello@example.com', the local part is 'hello'. Applicable only to email templates.
+        :param reply_to_email_name: The local part of the Reply To email address that will be used for emails. For example, in the address 'hello@example.com', the local part is 'hello'. Applicable only to email templates.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -763,8 +790,11 @@ class Templates(BaseSDK):
         request = models.PreviewTemplateRequest(
             template_type=template_type,
             slug=slug,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.PreviewTemplateRequestBody]
+            request_body=models.PreviewTemplateRequestBody(
+                subject=subject,
+                body=body,
+                from_email_name=from_email_name,
+                reply_to_email_name=reply_to_email_name,
             ),
         )
 
@@ -837,12 +867,10 @@ class Templates(BaseSDK):
         *,
         template_type: str,
         slug: str,
-        request_body: Optional[
-            Union[
-                models.PreviewTemplateRequestBody,
-                models.PreviewTemplateRequestBodyTypedDict,
-            ]
-        ] = None,
+        subject: OptionalNullable[str] = UNSET,
+        body: Optional[str] = None,
+        from_email_name: Optional[str] = None,
+        reply_to_email_name: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -853,7 +881,10 @@ class Templates(BaseSDK):
 
         :param template_type: The type of template to preview
         :param slug: The slug of the template to preview
-        :param request_body: Required parameters
+        :param subject: The email subject. Applicable only to email templates.
+        :param body: The template body before variable interpolation
+        :param from_email_name: The local part of the From email address that will be used for emails. For example, in the address 'hello@example.com', the local part is 'hello'. Applicable only to email templates.
+        :param reply_to_email_name: The local part of the Reply To email address that will be used for emails. For example, in the address 'hello@example.com', the local part is 'hello'. Applicable only to email templates.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -869,8 +900,11 @@ class Templates(BaseSDK):
         request = models.PreviewTemplateRequest(
             template_type=template_type,
             slug=slug,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.PreviewTemplateRequestBody]
+            request_body=models.PreviewTemplateRequestBody(
+                subject=subject,
+                body=body,
+                from_email_name=from_email_name,
+                reply_to_email_name=reply_to_email_name,
             ),
         )
 
@@ -943,12 +977,7 @@ class Templates(BaseSDK):
         *,
         template_type: models.ToggleTemplateDeliveryPathParamTemplateType,
         slug: str,
-        request_body: Optional[
-            Union[
-                models.ToggleTemplateDeliveryRequestBody,
-                models.ToggleTemplateDeliveryRequestBodyTypedDict,
-            ]
-        ] = None,
+        delivered_by_clerk: OptionalNullable[bool] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -961,7 +990,7 @@ class Templates(BaseSDK):
 
         :param template_type: The type of template to toggle delivery for
         :param slug: The slug of the template for which to toggle delivery
-        :param request_body:
+        :param delivered_by_clerk: Whether Clerk should deliver emails or SMS messages based on the current template
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -977,8 +1006,8 @@ class Templates(BaseSDK):
         request = models.ToggleTemplateDeliveryRequest(
             template_type=template_type,
             slug=slug,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.ToggleTemplateDeliveryRequestBody]
+            request_body=models.ToggleTemplateDeliveryRequestBody(
+                delivered_by_clerk=delivered_by_clerk,
             ),
         )
 
@@ -1047,12 +1076,7 @@ class Templates(BaseSDK):
         *,
         template_type: models.ToggleTemplateDeliveryPathParamTemplateType,
         slug: str,
-        request_body: Optional[
-            Union[
-                models.ToggleTemplateDeliveryRequestBody,
-                models.ToggleTemplateDeliveryRequestBodyTypedDict,
-            ]
-        ] = None,
+        delivered_by_clerk: OptionalNullable[bool] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -1065,7 +1089,7 @@ class Templates(BaseSDK):
 
         :param template_type: The type of template to toggle delivery for
         :param slug: The slug of the template for which to toggle delivery
-        :param request_body:
+        :param delivered_by_clerk: Whether Clerk should deliver emails or SMS messages based on the current template
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -1081,8 +1105,8 @@ class Templates(BaseSDK):
         request = models.ToggleTemplateDeliveryRequest(
             template_type=template_type,
             slug=slug,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.ToggleTemplateDeliveryRequestBody]
+            request_body=models.ToggleTemplateDeliveryRequestBody(
+                delivered_by_clerk=delivered_by_clerk,
             ),
         )
 

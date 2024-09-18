@@ -506,12 +506,17 @@ class JwtTemplates(BaseSDK):
         self,
         *,
         template_id: str,
-        request_body: Optional[
+        name: Optional[str] = None,
+        claims: Optional[
             Union[
-                models.UpdateJWTTemplateRequestBody,
-                models.UpdateJWTTemplateRequestBodyTypedDict,
+                models.UpdateJWTTemplateClaims, models.UpdateJWTTemplateClaimsTypedDict
             ]
         ] = None,
+        lifetime: OptionalNullable[float] = UNSET,
+        allowed_clock_skew: OptionalNullable[float] = UNSET,
+        custom_signing_key: Optional[bool] = None,
+        signing_algorithm: OptionalNullable[str] = UNSET,
+        signing_key: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -521,7 +526,13 @@ class JwtTemplates(BaseSDK):
         Updates an existing JWT template
 
         :param template_id: The ID of the JWT template to update
-        :param request_body:
+        :param name: JWT template name
+        :param claims: JWT template claims in JSON format
+        :param lifetime: JWT token lifetime
+        :param allowed_clock_skew: JWT token allowed clock skew
+        :param custom_signing_key: Whether a custom signing key/algorithm is also provided for this template
+        :param signing_algorithm: The custom signing algorithm to use when minting JWTs
+        :param signing_key: The custom signing private key to use when minting JWTs
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -536,8 +547,16 @@ class JwtTemplates(BaseSDK):
 
         request = models.UpdateJWTTemplateRequest(
             template_id=template_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdateJWTTemplateRequestBody]
+            request_body=models.UpdateJWTTemplateRequestBody(
+                name=name,
+                claims=utils.get_pydantic_model(
+                    claims, Optional[models.UpdateJWTTemplateClaims]
+                ),
+                lifetime=lifetime,
+                allowed_clock_skew=allowed_clock_skew,
+                custom_signing_key=custom_signing_key,
+                signing_algorithm=signing_algorithm,
+                signing_key=signing_key,
             ),
         )
 
@@ -605,12 +624,17 @@ class JwtTemplates(BaseSDK):
         self,
         *,
         template_id: str,
-        request_body: Optional[
+        name: Optional[str] = None,
+        claims: Optional[
             Union[
-                models.UpdateJWTTemplateRequestBody,
-                models.UpdateJWTTemplateRequestBodyTypedDict,
+                models.UpdateJWTTemplateClaims, models.UpdateJWTTemplateClaimsTypedDict
             ]
         ] = None,
+        lifetime: OptionalNullable[float] = UNSET,
+        allowed_clock_skew: OptionalNullable[float] = UNSET,
+        custom_signing_key: Optional[bool] = None,
+        signing_algorithm: OptionalNullable[str] = UNSET,
+        signing_key: OptionalNullable[str] = UNSET,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -620,7 +644,13 @@ class JwtTemplates(BaseSDK):
         Updates an existing JWT template
 
         :param template_id: The ID of the JWT template to update
-        :param request_body:
+        :param name: JWT template name
+        :param claims: JWT template claims in JSON format
+        :param lifetime: JWT token lifetime
+        :param allowed_clock_skew: JWT token allowed clock skew
+        :param custom_signing_key: Whether a custom signing key/algorithm is also provided for this template
+        :param signing_algorithm: The custom signing algorithm to use when minting JWTs
+        :param signing_key: The custom signing private key to use when minting JWTs
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -635,8 +665,16 @@ class JwtTemplates(BaseSDK):
 
         request = models.UpdateJWTTemplateRequest(
             template_id=template_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdateJWTTemplateRequestBody]
+            request_body=models.UpdateJWTTemplateRequestBody(
+                name=name,
+                claims=utils.get_pydantic_model(
+                    claims, Optional[models.UpdateJWTTemplateClaims]
+                ),
+                lifetime=lifetime,
+                allowed_clock_skew=allowed_clock_skew,
+                custom_signing_key=custom_signing_key,
+                signing_algorithm=signing_algorithm,
+                signing_key=signing_key,
             ),
         )
 

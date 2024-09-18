@@ -3,27 +3,18 @@
 from .basesdk import BaseSDK
 from clerk_backend_api import models, utils
 from clerk_backend_api._hooks import HookContext
-from clerk_backend_api.types import OptionalNullable, UNSET
+from clerk_backend_api.types import BaseModel, OptionalNullable, UNSET
 from jsonpath import JSONPath
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union, cast
 
 
 class Users(BaseSDK):
     def list(
         self,
         *,
-        email_address: Optional[List[str]] = None,
-        phone_number: Optional[List[str]] = None,
-        external_id: Optional[List[str]] = None,
-        username: Optional[List[str]] = None,
-        web3_wallet: Optional[List[str]] = None,
-        user_id: Optional[List[str]] = None,
-        organization_id: Optional[List[str]] = None,
-        query: Optional[str] = None,
-        last_active_at_since: Optional[int] = None,
-        limit: Optional[int] = 10,
-        offset: Optional[int] = 0,
-        order_by: Optional[str] = "-created_at",
+        request: Optional[
+            Union[models.GetUserListRequest, models.GetUserListRequestTypedDict]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -33,18 +24,7 @@ class Users(BaseSDK):
         Returns a list of all users.
         The users are returned sorted by creation date, with the newest users appearing first.
 
-        :param email_address: Returns users with the specified email addresses. Accepts up to 100 email addresses. Any email addresses not found are ignored.
-        :param phone_number: Returns users with the specified phone numbers. Accepts up to 100 phone numbers. Any phone numbers not found are ignored.
-        :param external_id: Returns users with the specified external ids. For each external id, the `+` and `-` can be prepended to the id, which denote whether the respective external id should be included or excluded from the result set. Accepts up to 100 external ids. Any external ids not found are ignored.
-        :param username: Returns users with the specified usernames. Accepts up to 100 usernames. Any usernames not found are ignored.
-        :param web3_wallet: Returns users with the specified web3 wallet addresses. Accepts up to 100 web3 wallet addresses. Any web3 wallet addressed not found are ignored.
-        :param user_id: Returns users with the user ids specified. For each user id, the `+` and `-` can be prepended to the id, which denote whether the respective user id should be included or excluded from the result set. Accepts up to 100 user ids. Any user ids not found are ignored.
-        :param organization_id: Returns users that have memberships to the given organizations. For each organization id, the `+` and `-` can be prepended to the id, which denote whether the respective organization should be included or excluded from the result set. Accepts up to 100 organization ids.
-        :param query: Returns users that match the given query. For possible matches, we check the email addresses, phone numbers, usernames, web3 wallets, user ids, first and last names. The query value doesn't need to match the exact value you are looking for, it is capable of partial matches as well.
-        :param last_active_at_since: Returns users that had session activity since the given date, with day precision. Providing a value with higher precision than day will result in an error. Example: use 1700690400000 to retrieve users that had session activity from 2023-11-23 until the current day.
-        :param limit: Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`.
-        :param offset: Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`.
-        :param order_by: Allows to return users in a particular order. At the moment, you can order the returned users by their `created_at`,`updated_at`,`email_address`,`web3wallet`,`first_name`,`last_name`,`phone_number`,`username`,`last_active_at`,`last_sign_in_at`. In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by. For example, if you want users to be returned in descending order according to their `created_at` property, you can use `-created_at`. If you don't use `+` or `-`, then `+` is implied. We only support one `order_by` parameter, and if multiple `order_by` parameters are provided, we will only keep the first one. For example, if you pass `order_by=username&order_by=created_at`, we will consider only the first `order_by` parameter, which is `username`. The `created_at` parameter will be ignored in this case.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -57,20 +37,9 @@ class Users(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.GetUserListRequest(
-            email_address=email_address,
-            phone_number=phone_number,
-            external_id=external_id,
-            username=username,
-            web3_wallet=web3_wallet,
-            user_id=user_id,
-            organization_id=organization_id,
-            query=query,
-            last_active_at_since=last_active_at_since,
-            limit=limit,
-            offset=offset,
-            order_by=order_by,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.GetUserListRequest)
+        request = cast(models.GetUserListRequest, request)
 
         req = self.build_request(
             method="GET",
@@ -128,18 +97,9 @@ class Users(BaseSDK):
     async def list_async(
         self,
         *,
-        email_address: Optional[List[str]] = None,
-        phone_number: Optional[List[str]] = None,
-        external_id: Optional[List[str]] = None,
-        username: Optional[List[str]] = None,
-        web3_wallet: Optional[List[str]] = None,
-        user_id: Optional[List[str]] = None,
-        organization_id: Optional[List[str]] = None,
-        query: Optional[str] = None,
-        last_active_at_since: Optional[int] = None,
-        limit: Optional[int] = 10,
-        offset: Optional[int] = 0,
-        order_by: Optional[str] = "-created_at",
+        request: Optional[
+            Union[models.GetUserListRequest, models.GetUserListRequestTypedDict]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -149,18 +109,7 @@ class Users(BaseSDK):
         Returns a list of all users.
         The users are returned sorted by creation date, with the newest users appearing first.
 
-        :param email_address: Returns users with the specified email addresses. Accepts up to 100 email addresses. Any email addresses not found are ignored.
-        :param phone_number: Returns users with the specified phone numbers. Accepts up to 100 phone numbers. Any phone numbers not found are ignored.
-        :param external_id: Returns users with the specified external ids. For each external id, the `+` and `-` can be prepended to the id, which denote whether the respective external id should be included or excluded from the result set. Accepts up to 100 external ids. Any external ids not found are ignored.
-        :param username: Returns users with the specified usernames. Accepts up to 100 usernames. Any usernames not found are ignored.
-        :param web3_wallet: Returns users with the specified web3 wallet addresses. Accepts up to 100 web3 wallet addresses. Any web3 wallet addressed not found are ignored.
-        :param user_id: Returns users with the user ids specified. For each user id, the `+` and `-` can be prepended to the id, which denote whether the respective user id should be included or excluded from the result set. Accepts up to 100 user ids. Any user ids not found are ignored.
-        :param organization_id: Returns users that have memberships to the given organizations. For each organization id, the `+` and `-` can be prepended to the id, which denote whether the respective organization should be included or excluded from the result set. Accepts up to 100 organization ids.
-        :param query: Returns users that match the given query. For possible matches, we check the email addresses, phone numbers, usernames, web3 wallets, user ids, first and last names. The query value doesn't need to match the exact value you are looking for, it is capable of partial matches as well.
-        :param last_active_at_since: Returns users that had session activity since the given date, with day precision. Providing a value with higher precision than day will result in an error. Example: use 1700690400000 to retrieve users that had session activity from 2023-11-23 until the current day.
-        :param limit: Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`.
-        :param offset: Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`.
-        :param order_by: Allows to return users in a particular order. At the moment, you can order the returned users by their `created_at`,`updated_at`,`email_address`,`web3wallet`,`first_name`,`last_name`,`phone_number`,`username`,`last_active_at`,`last_sign_in_at`. In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by. For example, if you want users to be returned in descending order according to their `created_at` property, you can use `-created_at`. If you don't use `+` or `-`, then `+` is implied. We only support one `order_by` parameter, and if multiple `order_by` parameters are provided, we will only keep the first one. For example, if you pass `order_by=username&order_by=created_at`, we will consider only the first `order_by` parameter, which is `username`. The `created_at` parameter will be ignored in this case.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -173,20 +122,9 @@ class Users(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.GetUserListRequest(
-            email_address=email_address,
-            phone_number=phone_number,
-            external_id=external_id,
-            username=username,
-            web3_wallet=web3_wallet,
-            user_id=user_id,
-            organization_id=organization_id,
-            query=query,
-            last_active_at_since=last_active_at_since,
-            limit=limit,
-            offset=offset,
-            order_by=order_by,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.GetUserListRequest)
+        request = cast(models.GetUserListRequest, request)
 
         req = self.build_request_async(
             method="GET",
@@ -244,39 +182,9 @@ class Users(BaseSDK):
     def create(
         self,
         *,
-        external_id: OptionalNullable[str] = UNSET,
-        first_name: OptionalNullable[str] = UNSET,
-        last_name: OptionalNullable[str] = UNSET,
-        email_address: Optional[List[str]] = None,
-        phone_number: Optional[List[str]] = None,
-        web3_wallet: Optional[List[str]] = None,
-        username: OptionalNullable[str] = UNSET,
-        password: OptionalNullable[str] = UNSET,
-        password_digest: Optional[str] = None,
-        password_hasher: Optional[models.PasswordHasher] = None,
-        skip_password_checks: Optional[bool] = None,
-        skip_password_requirement: Optional[bool] = None,
-        totp_secret: Optional[str] = None,
-        backup_codes: Optional[List[str]] = None,
-        public_metadata: Optional[
-            Union[
-                models.CreateUserPublicMetadata,
-                models.CreateUserPublicMetadataTypedDict,
-            ]
+        request: Optional[
+            Union[models.CreateUserRequestBody, models.CreateUserRequestBodyTypedDict]
         ] = None,
-        private_metadata: Optional[
-            Union[
-                models.CreateUserPrivateMetadata,
-                models.CreateUserPrivateMetadataTypedDict,
-            ]
-        ] = None,
-        unsafe_metadata: Optional[
-            Union[
-                models.CreateUserUnsafeMetadata,
-                models.CreateUserUnsafeMetadataTypedDict,
-            ]
-        ] = None,
-        created_at: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -291,24 +199,7 @@ class Users(BaseSDK):
 
         A rate limit rule of 20 requests per 10 seconds is applied to this endpoint.
 
-        :param external_id: The ID of the user as used in your external systems or your previous authentication solution. Must be unique across your instance.
-        :param first_name: The first name to assign to the user
-        :param last_name: The last name to assign to the user
-        :param email_address: Email addresses to add to the user. Must be unique across your instance. The first email address will be set as the user's primary email address.
-        :param phone_number: Phone numbers to add to the user. Must be unique across your instance. The first phone number will be set as the user's primary phone number.
-        :param web3_wallet: Web3 wallets to add to the user. Must be unique across your instance. The first wallet will be set as the user's primary wallet.
-        :param username: The username to give to the user. It must be unique across your instance.
-        :param password: The plaintext password to give the user. Must be at least 8 characters long, and can not be in any list of hacked passwords.
-        :param password_digest: In case you already have the password digests and not the passwords, you can use them for the newly created user via this property. The digests should be generated with one of the supported algorithms. The hashing algorithm can be specified using the `password_hasher` property.
-        :param password_hasher: The hashing algorithm that was used to generate the password digest. The algorithms we support at the moment are [bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [bcrypt_sha256_django](https://docs.djangoproject.com/en/4.0/topics/auth/passwords/), [md5](https://en.wikipedia.org/wiki/MD5), pbkdf2_sha256, pbkdf2_sha512, [pbkdf2_sha256_django](https://docs.djangoproject.com/en/4.0/topics/auth/passwords/), [phpass](https://www.openwall.com/phpass/), [scrypt_firebase](https://firebaseopensource.com/projects/firebase/scrypt/), [scrypt_werkzeug](https://werkzeug.palletsprojects.com/en/3.0.x/utils/#werkzeug.security.generate_password_hash), [sha256](https://en.wikipedia.org/wiki/SHA-2) and the [argon2](https://argon2.online/) variants argon2i and argon2id.  If you need support for any particular hashing algorithm, [please let us know](https://clerk.com/support).  Note: for password hashers considered insecure (at this moment MD5 and SHA256), the corresponding user password hashes will be transparently migrated to Bcrypt (a secure hasher) upon the user's first successful password sign in. Insecure schemes are marked with `(insecure)` in the list below.  Each of the supported hashers expects the incoming digest to be in a particular format. Specifically:  **bcrypt:** The digest should be of the following form:  `$<algorithm version>$<cost>$<salt & hash>`  **bcrypt_sha256_django:** This is the Django-specific variant of Bcrypt, using SHA256 hashing function. The format should be as follows (as exported from Django):  `bcrypt_sha256$$<algorithm version>$<cost>$<salt & hash>`  **md5** (insecure): The digest should follow the regular form e.g.:  `5f4dcc3b5aa765d61d8327deb882cf99`  **pbkdf2_sha256:** This is the PBKDF2 algorithm using the SHA256 hashing function. The format should be as follows:  `pbkdf2_sha256$<iterations>$<salt>$<hash>`  Note: Both the salt and the hash are expected to be base64-encoded.  **pbkdf2_sha512:** This is the PBKDF2 algorithm using the SHA512 hashing function. The format should be as follows:  `pbkdf2_sha512$<iterations>$<salt>$<hash>`    _iterations:_ The number of iterations used. Must be an integer less than 420000.   _salt:_ The salt used when generating the hash. Must be less than 1024 bytes.   _hash:_ The hex-encoded hash. Must have been generated with a key length less than 1024 bytes.  **pbkdf2_sha256_django:** This is the Django-specific variant of PBKDF2 and the digest should have the following format (as exported from Django):  `pbkdf2_sha256$<iterations>$<salt>$<hash>`  Note: The salt is expected to be un-encoded, the hash is expected base64-encoded.  **pbkdf2_sha1:** This is similar to pkbdf2_sha256_django, but with two differences: 1. uses sha1 instead of sha256 2. accepts the hash as a hex-encoded string  The format is the following:  `pbkdf2_sha1$<iterations>$<salt>$<hash-as-hex-string>`  **phpass:** Portable public domain password hashing framework for use in PHP applications. Digests hashed with phpass have the following sections:  The format is the following:  `$P$<rounds><salt><encoded-checksum>`  - $P$ is the prefix used to identify phpass hashes. - rounds is a single character encoding a 6-bit integer representing the number of rounds used. - salt is eight characters drawn from [./0-9A-Za-z], providing a 48-bit salt. - checksum is 22 characters drawn from the same set, encoding the 128-bit checksum with MD5.  **scrypt_firebase:** The Firebase-specific variant of scrypt. The value is expected to have 6 segments separated by the $ character and include the following information:  _hash:_ The actual Base64 hash. This can be retrieved when exporting the user from Firebase. _salt:_ The salt used to generate the above hash. Again, this is given when exporting the user. _signer key:_ The base64 encoded signer key. _salt separator:_ The base64 encoded salt separator. _rounds:_ The number of rounds the algorithm needs to run. _memory cost:_ The cost of the algorithm run  The first 2 (hash and salt) are per user and can be retrieved when exporting the user from Firebase. The other 4 values (signer key, salt separator, rounds and memory cost) are project-wide settings and can be retrieved from the project's password hash parameters.  Once you have all these, you can combine it in the following format and send this as the digest in order for Clerk to accept it:  `<hash>$<salt>$<signer key>$<salt separator>$<rounds>$<memory cost>`  **scrypt_werkzeug:** The Werkzeug-specific variant of scrypt.    The value is expected to have 3 segments separated by the $ character and include the following information:    _algorithm args:_ The algorithm used to generate the hash.   _salt:_ The salt used to generate the above hash.   _hash:_ The actual Base64 hash.    The algorithm args are the parameters used to generate the hash and are included in the digest.  **argon2i:** Algorithms in the argon2 family generate digests that encode the following information:  _version (v):_ The argon version, version 19 is assumed _memory (m):_ The memory used by the algorithm (in kibibytes) _iterations (t):_ The number of iterations to perform _parallelism (p):_ The number of threads to use  Parts are demarcated by the `$` character, with the first part identifying the algorithm variant. The middle part is a comma-separated list of the encoding options (memory, iterations, parallelism). The final part is the actual digest.  `$argon2i$v=19$m=4096,t=3,p=1$4t6CL3P7YiHBtwESXawI8Hm20zJj4cs7/4/G3c187e0$m7RQFczcKr5bIR0IIxbpO2P0tyrLjf3eUW3M3QSwnLc`  **argon2id:** See the previous algorithm for an explanation of the formatting.  For the argon2id case, the value of the algorithm in the first part of the digest is `argon2id`:  `$argon2id$v=19$m=64,t=4,p=8$Z2liZXJyaXNo$iGXEpMBTDYQ8G/71tF0qGjxRHEmR3gpGULcE93zUJVU`  **sha256** (insecure): The digest should be a 64-length hex string, e.g.:  `9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08`  **sha256_salted** (insecure): The digest should be a 64-length hex string with a salt.  The format is the following:   `<hash>$<salt>`    The value is expected to have 2 segments separated by the $ character and include the following information:   _hash:_ The sha256 hash, a 64-length hex string.   _salt:_ The salt used to generate the above hash. Must be between 1 and 1024 bits.
-        :param skip_password_checks: When set to `true` all password checks are skipped. It is recommended to use this method only when migrating plaintext passwords to Clerk. Upon migration the user base should be prompted to pick stronger password.
-        :param skip_password_requirement: When set to `true`, `password` is not required anymore when creating the user and can be omitted. This is useful when you are trying to create a user that doesn't have a password, in an instance that is using passwords. Please note that you cannot use this flag if password is the only way for a user to sign into your instance.
-        :param totp_secret: In case TOTP is configured on the instance, you can provide the secret to enable it on the newly created user without the need to reset it. Please note that currently the supported options are: * Period: 30 seconds * Code length: 6 digits * Algorithm: SHA1
-        :param backup_codes: If Backup Codes are configured on the instance, you can provide them to enable it on the newly created user without the need to reset them. You must provide the backup codes in plain format or the corresponding bcrypt digest.
-        :param public_metadata: Metadata saved on the user, that is visible to both your Frontend and Backend APIs
-        :param private_metadata: Metadata saved on the user, that is only visible to your Backend API
-        :param unsafe_metadata: Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe.
-        :param created_at: A custom date/time denoting _when_ the user signed up to the application, specified in RFC3339 format (e.g. `2012-10-20T07:15:20.902Z`).
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -321,32 +212,9 @@ class Users(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.CreateUserRequestBody(
-            external_id=external_id,
-            first_name=first_name,
-            last_name=last_name,
-            email_address=email_address,
-            phone_number=phone_number,
-            web3_wallet=web3_wallet,
-            username=username,
-            password=password,
-            password_digest=password_digest,
-            password_hasher=password_hasher,
-            skip_password_checks=skip_password_checks,
-            skip_password_requirement=skip_password_requirement,
-            totp_secret=totp_secret,
-            backup_codes=backup_codes,
-            public_metadata=utils.get_pydantic_model(
-                public_metadata, Optional[models.CreateUserPublicMetadata]
-            ),
-            private_metadata=utils.get_pydantic_model(
-                private_metadata, Optional[models.CreateUserPrivateMetadata]
-            ),
-            unsafe_metadata=utils.get_pydantic_model(
-                unsafe_metadata, Optional[models.CreateUserUnsafeMetadata]
-            ),
-            created_at=created_at,
-        )
+        if not isinstance(request, BaseModel) and request is not None:
+            request = utils.unmarshal(request, models.CreateUserRequestBody)
+        request = cast(models.CreateUserRequestBody, request)
 
         req = self.build_request(
             method="POST",
@@ -361,7 +229,7 @@ class Users(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CreateUserRequestBody
+                request, False, True, "json", Optional[models.CreateUserRequestBody]
             ),
             timeout_ms=timeout_ms,
         )
@@ -409,39 +277,9 @@ class Users(BaseSDK):
     async def create_async(
         self,
         *,
-        external_id: OptionalNullable[str] = UNSET,
-        first_name: OptionalNullable[str] = UNSET,
-        last_name: OptionalNullable[str] = UNSET,
-        email_address: Optional[List[str]] = None,
-        phone_number: Optional[List[str]] = None,
-        web3_wallet: Optional[List[str]] = None,
-        username: OptionalNullable[str] = UNSET,
-        password: OptionalNullable[str] = UNSET,
-        password_digest: Optional[str] = None,
-        password_hasher: Optional[models.PasswordHasher] = None,
-        skip_password_checks: Optional[bool] = None,
-        skip_password_requirement: Optional[bool] = None,
-        totp_secret: Optional[str] = None,
-        backup_codes: Optional[List[str]] = None,
-        public_metadata: Optional[
-            Union[
-                models.CreateUserPublicMetadata,
-                models.CreateUserPublicMetadataTypedDict,
-            ]
+        request: Optional[
+            Union[models.CreateUserRequestBody, models.CreateUserRequestBodyTypedDict]
         ] = None,
-        private_metadata: Optional[
-            Union[
-                models.CreateUserPrivateMetadata,
-                models.CreateUserPrivateMetadataTypedDict,
-            ]
-        ] = None,
-        unsafe_metadata: Optional[
-            Union[
-                models.CreateUserUnsafeMetadata,
-                models.CreateUserUnsafeMetadataTypedDict,
-            ]
-        ] = None,
-        created_at: Optional[str] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -456,24 +294,7 @@ class Users(BaseSDK):
 
         A rate limit rule of 20 requests per 10 seconds is applied to this endpoint.
 
-        :param external_id: The ID of the user as used in your external systems or your previous authentication solution. Must be unique across your instance.
-        :param first_name: The first name to assign to the user
-        :param last_name: The last name to assign to the user
-        :param email_address: Email addresses to add to the user. Must be unique across your instance. The first email address will be set as the user's primary email address.
-        :param phone_number: Phone numbers to add to the user. Must be unique across your instance. The first phone number will be set as the user's primary phone number.
-        :param web3_wallet: Web3 wallets to add to the user. Must be unique across your instance. The first wallet will be set as the user's primary wallet.
-        :param username: The username to give to the user. It must be unique across your instance.
-        :param password: The plaintext password to give the user. Must be at least 8 characters long, and can not be in any list of hacked passwords.
-        :param password_digest: In case you already have the password digests and not the passwords, you can use them for the newly created user via this property. The digests should be generated with one of the supported algorithms. The hashing algorithm can be specified using the `password_hasher` property.
-        :param password_hasher: The hashing algorithm that was used to generate the password digest. The algorithms we support at the moment are [bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [bcrypt_sha256_django](https://docs.djangoproject.com/en/4.0/topics/auth/passwords/), [md5](https://en.wikipedia.org/wiki/MD5), pbkdf2_sha256, pbkdf2_sha512, [pbkdf2_sha256_django](https://docs.djangoproject.com/en/4.0/topics/auth/passwords/), [phpass](https://www.openwall.com/phpass/), [scrypt_firebase](https://firebaseopensource.com/projects/firebase/scrypt/), [scrypt_werkzeug](https://werkzeug.palletsprojects.com/en/3.0.x/utils/#werkzeug.security.generate_password_hash), [sha256](https://en.wikipedia.org/wiki/SHA-2) and the [argon2](https://argon2.online/) variants argon2i and argon2id.  If you need support for any particular hashing algorithm, [please let us know](https://clerk.com/support).  Note: for password hashers considered insecure (at this moment MD5 and SHA256), the corresponding user password hashes will be transparently migrated to Bcrypt (a secure hasher) upon the user's first successful password sign in. Insecure schemes are marked with `(insecure)` in the list below.  Each of the supported hashers expects the incoming digest to be in a particular format. Specifically:  **bcrypt:** The digest should be of the following form:  `$<algorithm version>$<cost>$<salt & hash>`  **bcrypt_sha256_django:** This is the Django-specific variant of Bcrypt, using SHA256 hashing function. The format should be as follows (as exported from Django):  `bcrypt_sha256$$<algorithm version>$<cost>$<salt & hash>`  **md5** (insecure): The digest should follow the regular form e.g.:  `5f4dcc3b5aa765d61d8327deb882cf99`  **pbkdf2_sha256:** This is the PBKDF2 algorithm using the SHA256 hashing function. The format should be as follows:  `pbkdf2_sha256$<iterations>$<salt>$<hash>`  Note: Both the salt and the hash are expected to be base64-encoded.  **pbkdf2_sha512:** This is the PBKDF2 algorithm using the SHA512 hashing function. The format should be as follows:  `pbkdf2_sha512$<iterations>$<salt>$<hash>`    _iterations:_ The number of iterations used. Must be an integer less than 420000.   _salt:_ The salt used when generating the hash. Must be less than 1024 bytes.   _hash:_ The hex-encoded hash. Must have been generated with a key length less than 1024 bytes.  **pbkdf2_sha256_django:** This is the Django-specific variant of PBKDF2 and the digest should have the following format (as exported from Django):  `pbkdf2_sha256$<iterations>$<salt>$<hash>`  Note: The salt is expected to be un-encoded, the hash is expected base64-encoded.  **pbkdf2_sha1:** This is similar to pkbdf2_sha256_django, but with two differences: 1. uses sha1 instead of sha256 2. accepts the hash as a hex-encoded string  The format is the following:  `pbkdf2_sha1$<iterations>$<salt>$<hash-as-hex-string>`  **phpass:** Portable public domain password hashing framework for use in PHP applications. Digests hashed with phpass have the following sections:  The format is the following:  `$P$<rounds><salt><encoded-checksum>`  - $P$ is the prefix used to identify phpass hashes. - rounds is a single character encoding a 6-bit integer representing the number of rounds used. - salt is eight characters drawn from [./0-9A-Za-z], providing a 48-bit salt. - checksum is 22 characters drawn from the same set, encoding the 128-bit checksum with MD5.  **scrypt_firebase:** The Firebase-specific variant of scrypt. The value is expected to have 6 segments separated by the $ character and include the following information:  _hash:_ The actual Base64 hash. This can be retrieved when exporting the user from Firebase. _salt:_ The salt used to generate the above hash. Again, this is given when exporting the user. _signer key:_ The base64 encoded signer key. _salt separator:_ The base64 encoded salt separator. _rounds:_ The number of rounds the algorithm needs to run. _memory cost:_ The cost of the algorithm run  The first 2 (hash and salt) are per user and can be retrieved when exporting the user from Firebase. The other 4 values (signer key, salt separator, rounds and memory cost) are project-wide settings and can be retrieved from the project's password hash parameters.  Once you have all these, you can combine it in the following format and send this as the digest in order for Clerk to accept it:  `<hash>$<salt>$<signer key>$<salt separator>$<rounds>$<memory cost>`  **scrypt_werkzeug:** The Werkzeug-specific variant of scrypt.    The value is expected to have 3 segments separated by the $ character and include the following information:    _algorithm args:_ The algorithm used to generate the hash.   _salt:_ The salt used to generate the above hash.   _hash:_ The actual Base64 hash.    The algorithm args are the parameters used to generate the hash and are included in the digest.  **argon2i:** Algorithms in the argon2 family generate digests that encode the following information:  _version (v):_ The argon version, version 19 is assumed _memory (m):_ The memory used by the algorithm (in kibibytes) _iterations (t):_ The number of iterations to perform _parallelism (p):_ The number of threads to use  Parts are demarcated by the `$` character, with the first part identifying the algorithm variant. The middle part is a comma-separated list of the encoding options (memory, iterations, parallelism). The final part is the actual digest.  `$argon2i$v=19$m=4096,t=3,p=1$4t6CL3P7YiHBtwESXawI8Hm20zJj4cs7/4/G3c187e0$m7RQFczcKr5bIR0IIxbpO2P0tyrLjf3eUW3M3QSwnLc`  **argon2id:** See the previous algorithm for an explanation of the formatting.  For the argon2id case, the value of the algorithm in the first part of the digest is `argon2id`:  `$argon2id$v=19$m=64,t=4,p=8$Z2liZXJyaXNo$iGXEpMBTDYQ8G/71tF0qGjxRHEmR3gpGULcE93zUJVU`  **sha256** (insecure): The digest should be a 64-length hex string, e.g.:  `9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08`  **sha256_salted** (insecure): The digest should be a 64-length hex string with a salt.  The format is the following:   `<hash>$<salt>`    The value is expected to have 2 segments separated by the $ character and include the following information:   _hash:_ The sha256 hash, a 64-length hex string.   _salt:_ The salt used to generate the above hash. Must be between 1 and 1024 bits.
-        :param skip_password_checks: When set to `true` all password checks are skipped. It is recommended to use this method only when migrating plaintext passwords to Clerk. Upon migration the user base should be prompted to pick stronger password.
-        :param skip_password_requirement: When set to `true`, `password` is not required anymore when creating the user and can be omitted. This is useful when you are trying to create a user that doesn't have a password, in an instance that is using passwords. Please note that you cannot use this flag if password is the only way for a user to sign into your instance.
-        :param totp_secret: In case TOTP is configured on the instance, you can provide the secret to enable it on the newly created user without the need to reset it. Please note that currently the supported options are: * Period: 30 seconds * Code length: 6 digits * Algorithm: SHA1
-        :param backup_codes: If Backup Codes are configured on the instance, you can provide them to enable it on the newly created user without the need to reset them. You must provide the backup codes in plain format or the corresponding bcrypt digest.
-        :param public_metadata: Metadata saved on the user, that is visible to both your Frontend and Backend APIs
-        :param private_metadata: Metadata saved on the user, that is only visible to your Backend API
-        :param unsafe_metadata: Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe.
-        :param created_at: A custom date/time denoting _when_ the user signed up to the application, specified in RFC3339 format (e.g. `2012-10-20T07:15:20.902Z`).
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -486,32 +307,9 @@ class Users(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.CreateUserRequestBody(
-            external_id=external_id,
-            first_name=first_name,
-            last_name=last_name,
-            email_address=email_address,
-            phone_number=phone_number,
-            web3_wallet=web3_wallet,
-            username=username,
-            password=password,
-            password_digest=password_digest,
-            password_hasher=password_hasher,
-            skip_password_checks=skip_password_checks,
-            skip_password_requirement=skip_password_requirement,
-            totp_secret=totp_secret,
-            backup_codes=backup_codes,
-            public_metadata=utils.get_pydantic_model(
-                public_metadata, Optional[models.CreateUserPublicMetadata]
-            ),
-            private_metadata=utils.get_pydantic_model(
-                private_metadata, Optional[models.CreateUserPrivateMetadata]
-            ),
-            unsafe_metadata=utils.get_pydantic_model(
-                unsafe_metadata, Optional[models.CreateUserUnsafeMetadata]
-            ),
-            created_at=created_at,
-        )
+        if not isinstance(request, BaseModel) and request is not None:
+            request = utils.unmarshal(request, models.CreateUserRequestBody)
+        request = cast(models.CreateUserRequestBody, request)
 
         req = self.build_request_async(
             method="POST",
@@ -526,7 +324,7 @@ class Users(BaseSDK):
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
-                request, False, False, "json", models.CreateUserRequestBody
+                request, False, True, "json", Optional[models.CreateUserRequestBody]
             ),
             timeout_ms=timeout_ms,
         )
@@ -574,13 +372,9 @@ class Users(BaseSDK):
     def count(
         self,
         *,
-        email_address: Optional[List[str]] = None,
-        phone_number: Optional[List[str]] = None,
-        external_id: Optional[List[str]] = None,
-        username: Optional[List[str]] = None,
-        web3_wallet: Optional[List[str]] = None,
-        user_id: Optional[List[str]] = None,
-        query: Optional[str] = None,
+        request: Optional[
+            Union[models.GetUsersCountRequest, models.GetUsersCountRequestTypedDict]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -589,13 +383,7 @@ class Users(BaseSDK):
 
         Returns a total count of all users that match the given filtering criteria.
 
-        :param email_address: Counts users with the specified email addresses. Accepts up to 100 email addresses. Any email addresses not found are ignored.
-        :param phone_number: Counts users with the specified phone numbers. Accepts up to 100 phone numbers. Any phone numbers not found are ignored.
-        :param external_id: Counts users with the specified external ids. Accepts up to 100 external ids. Any external ids not found are ignored.
-        :param username: Counts users with the specified usernames. Accepts up to 100 usernames. Any usernames not found are ignored.
-        :param web3_wallet: Counts users with the specified web3 wallet addresses. Accepts up to 100 web3 wallet addresses. Any web3 wallet addressed not found are ignored.
-        :param user_id: Counts users with the user ids specified. Accepts up to 100 user ids. Any user ids not found are ignored.
-        :param query: Counts users that match the given query. For possible matches, we check the email addresses, phone numbers, usernames, web3 wallets, user ids, first and last names. The query value doesn't need to match the exact value you are looking for, it is capable of partial matches as well.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -608,15 +396,9 @@ class Users(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.GetUsersCountRequest(
-            email_address=email_address,
-            phone_number=phone_number,
-            external_id=external_id,
-            username=username,
-            web3_wallet=web3_wallet,
-            user_id=user_id,
-            query=query,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.GetUsersCountRequest)
+        request = cast(models.GetUsersCountRequest, request)
 
         req = self.build_request(
             method="GET",
@@ -674,13 +456,9 @@ class Users(BaseSDK):
     async def count_async(
         self,
         *,
-        email_address: Optional[List[str]] = None,
-        phone_number: Optional[List[str]] = None,
-        external_id: Optional[List[str]] = None,
-        username: Optional[List[str]] = None,
-        web3_wallet: Optional[List[str]] = None,
-        user_id: Optional[List[str]] = None,
-        query: Optional[str] = None,
+        request: Optional[
+            Union[models.GetUsersCountRequest, models.GetUsersCountRequestTypedDict]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -689,13 +467,7 @@ class Users(BaseSDK):
 
         Returns a total count of all users that match the given filtering criteria.
 
-        :param email_address: Counts users with the specified email addresses. Accepts up to 100 email addresses. Any email addresses not found are ignored.
-        :param phone_number: Counts users with the specified phone numbers. Accepts up to 100 phone numbers. Any phone numbers not found are ignored.
-        :param external_id: Counts users with the specified external ids. Accepts up to 100 external ids. Any external ids not found are ignored.
-        :param username: Counts users with the specified usernames. Accepts up to 100 usernames. Any usernames not found are ignored.
-        :param web3_wallet: Counts users with the specified web3 wallet addresses. Accepts up to 100 web3 wallet addresses. Any web3 wallet addressed not found are ignored.
-        :param user_id: Counts users with the user ids specified. Accepts up to 100 user ids. Any user ids not found are ignored.
-        :param query: Counts users that match the given query. For possible matches, we check the email addresses, phone numbers, usernames, web3 wallets, user ids, first and last names. The query value doesn't need to match the exact value you are looking for, it is capable of partial matches as well.
+        :param request: The request object to send.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -708,15 +480,9 @@ class Users(BaseSDK):
         if server_url is not None:
             base_url = server_url
 
-        request = models.GetUsersCountRequest(
-            email_address=email_address,
-            phone_number=phone_number,
-            external_id=external_id,
-            username=username,
-            web3_wallet=web3_wallet,
-            user_id=user_id,
-            query=query,
-        )
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(request, models.GetUsersCountRequest)
+        request = cast(models.GetUsersCountRequest, request)
 
         req = self.build_request_async(
             method="GET",
@@ -2487,10 +2253,17 @@ class Users(BaseSDK):
         self,
         *,
         user_id: str,
-        request_body: Optional[
+        public_metadata: Optional[Dict[str, Any]] = None,
+        private_metadata: Optional[
             Union[
-                models.UpdateUserMetadataRequestBody,
-                models.UpdateUserMetadataRequestBodyTypedDict,
+                models.UpdateUserMetadataPrivateMetadata,
+                models.UpdateUserMetadataPrivateMetadataTypedDict,
+            ]
+        ] = None,
+        unsafe_metadata: Optional[
+            Union[
+                models.UpdateUserMetadataUnsafeMetadata,
+                models.UpdateUserMetadataUnsafeMetadataTypedDict,
             ]
         ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -2509,7 +2282,9 @@ class Users(BaseSDK):
         You can remove metadata keys at any level by setting their value to `null`.
 
         :param user_id: The ID of the user whose metadata will be updated and merged
-        :param request_body:
+        :param public_metadata: Metadata saved on the user, that is visible to both your frontend and backend. The new object will be merged with the existing value.
+        :param private_metadata: Metadata saved on the user that is only visible to your backend. The new object will be merged with the existing value.
+        :param unsafe_metadata: Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The new object will be merged with the existing value.  Note: Since this data can be modified from the frontend, it is not guaranteed to be safe.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2524,8 +2299,14 @@ class Users(BaseSDK):
 
         request = models.UpdateUserMetadataRequest(
             user_id=user_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdateUserMetadataRequestBody]
+            request_body=models.UpdateUserMetadataRequestBody(
+                public_metadata=public_metadata,
+                private_metadata=utils.get_pydantic_model(
+                    private_metadata, Optional[models.UpdateUserMetadataPrivateMetadata]
+                ),
+                unsafe_metadata=utils.get_pydantic_model(
+                    unsafe_metadata, Optional[models.UpdateUserMetadataUnsafeMetadata]
+                ),
             ),
         )
 
@@ -2595,10 +2376,17 @@ class Users(BaseSDK):
         self,
         *,
         user_id: str,
-        request_body: Optional[
+        public_metadata: Optional[Dict[str, Any]] = None,
+        private_metadata: Optional[
             Union[
-                models.UpdateUserMetadataRequestBody,
-                models.UpdateUserMetadataRequestBodyTypedDict,
+                models.UpdateUserMetadataPrivateMetadata,
+                models.UpdateUserMetadataPrivateMetadataTypedDict,
+            ]
+        ] = None,
+        unsafe_metadata: Optional[
+            Union[
+                models.UpdateUserMetadataUnsafeMetadata,
+                models.UpdateUserMetadataUnsafeMetadataTypedDict,
             ]
         ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -2617,7 +2405,9 @@ class Users(BaseSDK):
         You can remove metadata keys at any level by setting their value to `null`.
 
         :param user_id: The ID of the user whose metadata will be updated and merged
-        :param request_body:
+        :param public_metadata: Metadata saved on the user, that is visible to both your frontend and backend. The new object will be merged with the existing value.
+        :param private_metadata: Metadata saved on the user that is only visible to your backend. The new object will be merged with the existing value.
+        :param unsafe_metadata: Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The new object will be merged with the existing value.  Note: Since this data can be modified from the frontend, it is not guaranteed to be safe.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -2632,8 +2422,14 @@ class Users(BaseSDK):
 
         request = models.UpdateUserMetadataRequest(
             user_id=user_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.UpdateUserMetadataRequestBody]
+            request_body=models.UpdateUserMetadataRequestBody(
+                public_metadata=public_metadata,
+                private_metadata=utils.get_pydantic_model(
+                    private_metadata, Optional[models.UpdateUserMetadataPrivateMetadata]
+                ),
+                unsafe_metadata=utils.get_pydantic_model(
+                    unsafe_metadata, Optional[models.UpdateUserMetadataUnsafeMetadata]
+                ),
             ),
         )
 
@@ -3107,12 +2903,7 @@ class Users(BaseSDK):
         self,
         *,
         user_id: str,
-        request_body: Optional[
-            Union[
-                models.VerifyPasswordRequestBody,
-                models.VerifyPasswordRequestBodyTypedDict,
-            ]
-        ] = None,
+        password: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -3123,7 +2914,7 @@ class Users(BaseSDK):
         Useful for custom auth flows and re-verification.
 
         :param user_id: The ID of the user for whom to verify the password
-        :param request_body:
+        :param password: The user password to verify
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -3138,8 +2929,8 @@ class Users(BaseSDK):
 
         request = models.VerifyPasswordRequest(
             user_id=user_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.VerifyPasswordRequestBody]
+            request_body=models.VerifyPasswordRequestBody(
+                password=password,
             ),
         )
 
@@ -3209,12 +3000,7 @@ class Users(BaseSDK):
         self,
         *,
         user_id: str,
-        request_body: Optional[
-            Union[
-                models.VerifyPasswordRequestBody,
-                models.VerifyPasswordRequestBodyTypedDict,
-            ]
-        ] = None,
+        password: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -3225,7 +3011,7 @@ class Users(BaseSDK):
         Useful for custom auth flows and re-verification.
 
         :param user_id: The ID of the user for whom to verify the password
-        :param request_body:
+        :param password: The user password to verify
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -3240,8 +3026,8 @@ class Users(BaseSDK):
 
         request = models.VerifyPasswordRequest(
             user_id=user_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.VerifyPasswordRequestBody]
+            request_body=models.VerifyPasswordRequestBody(
+                password=password,
             ),
         )
 
@@ -3311,9 +3097,7 @@ class Users(BaseSDK):
         self,
         *,
         user_id: str,
-        request_body: Optional[
-            Union[models.VerifyTOTPRequestBody, models.VerifyTOTPRequestBodyTypedDict]
-        ] = None,
+        code: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -3326,7 +3110,7 @@ class Users(BaseSDK):
         Useful for custom auth flows and re-verification.
 
         :param user_id: The ID of the user for whom to verify the TOTP
-        :param request_body:
+        :param code: The TOTP or backup code to verify
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -3341,8 +3125,8 @@ class Users(BaseSDK):
 
         request = models.VerifyTOTPRequest(
             user_id=user_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.VerifyTOTPRequestBody]
+            request_body=models.VerifyTOTPRequestBody(
+                code=code,
             ),
         )
 
@@ -3412,9 +3196,7 @@ class Users(BaseSDK):
         self,
         *,
         user_id: str,
-        request_body: Optional[
-            Union[models.VerifyTOTPRequestBody, models.VerifyTOTPRequestBodyTypedDict]
-        ] = None,
+        code: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -3427,7 +3209,7 @@ class Users(BaseSDK):
         Useful for custom auth flows and re-verification.
 
         :param user_id: The ID of the user for whom to verify the TOTP
-        :param request_body:
+        :param code: The TOTP or backup code to verify
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -3442,8 +3224,8 @@ class Users(BaseSDK):
 
         request = models.VerifyTOTPRequest(
             user_id=user_id,
-            request_body=utils.get_pydantic_model(
-                request_body, Optional[models.VerifyTOTPRequestBody]
+            request_body=models.VerifyTOTPRequestBody(
+                code=code,
             ),
         )
 
