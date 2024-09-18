@@ -23,7 +23,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.email_addresses.create(request={
     "user_id": "user_12345",
     "email_address": "example@clerk.com",
@@ -69,7 +68,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.email_addresses.get(email_address_id="email_address_id_example")
 
 if res is not None:
@@ -110,7 +108,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.email_addresses.delete(email_address_id="email_address_id_example")
 
 if res is not None:
@@ -150,7 +147,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.email_addresses.update(email_address_id="email_address_id_example", request_body={
     "verified": False,

@@ -22,7 +22,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 s.instance_settings.update(request={
     "test_mode": True,
     "hibp": False,
@@ -70,7 +69,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.instance_settings.update_restrictions(request={
     "allowlist": False,
     "blocklist": True,
@@ -116,7 +114,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.instance_settings.update_organization_settings(request={
     "enabled": True,

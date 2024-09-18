@@ -38,7 +38,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.list(email_address=[
     "test@example.com",
 ], phone_number=[
@@ -111,7 +110,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.create(external_id="ext-id-001", first_name="John", last_name="Doe", email_address=[
     "john.doe@example.com",
 ], phone_number=[
@@ -178,7 +176,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.count(email_address=[
     "user@example.com",
 ], phone_number=[
@@ -237,7 +234,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.get(user_id="usr_1")
 
 if res is not None:
@@ -289,7 +285,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.update(user_id="usr_1", external_id="ext_123", first_name="Jane", last_name="Doe", primary_email_address_id="eml_12345", notify_primary_email_address_changed=True, primary_phone_number_id="phn_67890", primary_web3_wallet_id="wlt_123", username="janedoe", profile_image_id="img_789", password="secretPass123!", password_digest="$argon2i$v=19$m=4096,t=3,p=1$4t6CL3P7YiHBtwESXawI8Hm20zJj4cs7/4/G3c187e0$m7RQFczcKr5bIR0IIxbpO2P0tyrLjf3eUW3M3QSwnLc", password_hasher=clerk_backend_api.UpdateUserPasswordHasher.ARGON2I, skip_password_checks=False, sign_out_of_other_sessions=True, totp_secret="ABCD1234EFGH5678", backup_codes=[
     "123456",
@@ -356,7 +351,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.delete(user_id="usr_1")
 
 if res is not None:
@@ -397,7 +391,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.ban(user_id="user_12345")
 
 if res is not None:
@@ -437,7 +430,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.unban(user_id="user_12345")
 
@@ -480,7 +472,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.lock(user_id="user_123456789")
 
 if res is not None:
@@ -520,7 +511,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.unlock(user_id="user_12345")
 
@@ -562,10 +552,9 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.set_profile_image(user_id="usr_test123", file={
-    "file_name": "your_file_here",
-    "content": open("<file_path>", "rb"),
+    "file_name": "example.file",
+    "content": open("example.file", "rb"),
     "content_type": "<value>",
 })
 
@@ -607,7 +596,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.delete_profile_image(user_id="usr_test123")
 
@@ -656,10 +644,10 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.update_metadata(user_id="user_123456789", request_body={
     "public_metadata": {
         "key": "<value>",
+        "key1": "<value>",
     },
     "private_metadata": {},
     "unsafe_metadata": {},
@@ -705,7 +693,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.get_o_auth_access_token(user_id="user_123", provider="oauth_google")
 
 if res is not None:
@@ -747,17 +734,15 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.get_organization_memberships(user_id="usr_1234567890", limit=20, offset=10)
 
 if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
-
 
 ```
 
@@ -795,7 +780,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.verify_password(user_id="user_123", request_body={
     "password": "securepassword123",
@@ -843,7 +827,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.users.verify_totp(user_id="usr_1a2b3c", request_body={
     "code": "123456",
 })
@@ -886,7 +869,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.users.disable_mfa(user_id="user_123456")
 

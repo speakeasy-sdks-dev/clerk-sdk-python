@@ -27,7 +27,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.templates.list(template_type=clerk_backend_api.TemplateType.EMAIL)
 
 if res is not None:
@@ -68,7 +67,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.get(template_type=clerk_backend_api.PathParamTemplateType.EMAIL, slug="welcome-email")
 
@@ -111,7 +109,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.upsert(template_type=clerk_backend_api.UpsertTemplatePathParamTemplateType.SMS, slug="verification-code", request_body={
     "name": "Verification Code",
@@ -164,7 +161,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.templates.revert(template_type=clerk_backend_api.RevertTemplatePathParamTemplateType.EMAIL, slug="welcome-email")
 
 if res is not None:
@@ -205,7 +201,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.preview(template_type="email", slug="welcome-email", request_body={
     "subject": "Welcome to our service!",
@@ -256,7 +251,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.templates.toggle_delivery(template_type=clerk_backend_api.ToggleTemplateDeliveryPathParamTemplateType.EMAIL, slug="welcome-email", request_body={
     "delivered_by_clerk": True,

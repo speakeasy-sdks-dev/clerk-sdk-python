@@ -24,7 +24,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.jwt_templates.list()
 
 if res is not None:
@@ -62,7 +61,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.jwt_templates.create(request={
     "name": "Example Template",
@@ -112,7 +110,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.jwt_templates.get(template_id="template_123")
 
 if res is not None:
@@ -153,13 +150,12 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.jwt_templates.update(template_id="<value>", request_body={
     "name": "<value>",
     "claims": {},
     "lifetime": 8574.78,
     "allowed_clock_skew": 245.55,
-    "custom_signing_key": False,
+    "custom_signing_key": True,
     "signing_algorithm": "<value>",
     "signing_key": "<value>",
 })
@@ -202,7 +198,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.jwt_templates.delete(template_id="<value>")
 

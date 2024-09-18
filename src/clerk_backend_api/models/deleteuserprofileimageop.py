@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class DeleteUserProfileImageRequestTypedDict(TypedDict):
     user_id: str
     r"""The ID of the user to delete the profile image for"""
-    
+
 
 class DeleteUserProfileImageRequest(BaseModel):
-    user_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    user_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the user to delete the profile image for"""
-    

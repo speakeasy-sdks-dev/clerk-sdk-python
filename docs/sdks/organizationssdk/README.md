@@ -30,7 +30,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organizations.list(limit=20, offset=10, include_members_count=False, query="clerk", order_by="-name")
 
 if res is not None:
@@ -83,7 +82,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organizations.create(request={
     "name": "NewOrg",
     "created_by": "user_123",
@@ -131,7 +129,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organizations.get(organization_id="org_123")
 
 if res is not None:
@@ -171,7 +168,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.organizations.update(organization_id="org_123_update", public_metadata={}, private_metadata={}, name="New Organization Name", slug="new-org-slug", max_allowed_memberships=100, admin_delete_enabled=True)
 
@@ -221,7 +217,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organizations.delete(organization_id="org_321_delete")
 
 if res is not None:
@@ -264,7 +259,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.organizations.merge_metadata(organization_id="org_12345", public_metadata={}, private_metadata={})
 
@@ -311,12 +305,11 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organizations.upload_logo(organization_id="org_12345", request_body={
     "uploader_user_id": "user_67890",
     "file": {
-        "file_name": "your_file_here",
-        "content": open("<file_path>", "rb"),
+        "file_name": "example.file",
+        "content": open("example.file", "rb"),
         "content_type": "<value>",
     },
 })
@@ -359,7 +352,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.organizations.delete_logo(organization_id="org_12345")
 

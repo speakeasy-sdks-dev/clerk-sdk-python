@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class DeleteSAMLConnectionRequestTypedDict(TypedDict):
     saml_connection_id: str
     r"""The ID of the SAML Connection to delete"""
-    
+
 
 class DeleteSAMLConnectionRequest(BaseModel):
-    saml_connection_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    saml_connection_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the SAML Connection to delete"""
-    

@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class RevokeSignInTokenRequestTypedDict(TypedDict):
     sign_in_token_id: str
     r"""The ID of the sign-in token to be revoked"""
-    
+
 
 class RevokeSignInTokenRequest(BaseModel):
-    sign_in_token_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    sign_in_token_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the sign-in token to be revoked"""
-    
