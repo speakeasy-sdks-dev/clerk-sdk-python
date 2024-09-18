@@ -11,9 +11,11 @@ from typing_extensions import Annotated, NotRequired
 
 class ListInvitationsQueryParamStatus(str, Enum):
     r"""Filter invitations based on their status"""
+
     PENDING = "pending"
     ACCEPTED = "accepted"
     REVOKED = "revoked"
+
 
 class ListInvitationsRequestTypedDict(TypedDict):
     limit: NotRequired[int]
@@ -27,28 +29,38 @@ class ListInvitationsRequestTypedDict(TypedDict):
     """
     status: NotRequired[ListInvitationsQueryParamStatus]
     r"""Filter invitations based on their status"""
-    
+
 
 class ListInvitationsRequest(BaseModel):
-    limit: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 10
+    limit: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 10
     r"""Applies a limit to the number of results returned.
     Can be used for paginating the results together with `offset`.
     """
-    offset: Annotated[Optional[int], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = 0
+
+    offset: Annotated[
+        Optional[int],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = 0
     r"""Skip the first `offset` results when paginating.
     Needs to be an integer greater or equal to zero.
     To be used in conjunction with `limit`.
     """
-    status: Annotated[Optional[ListInvitationsQueryParamStatus], FieldMetadata(query=QueryParamMetadata(style="form", explode=True))] = None
+
+    status: Annotated[
+        Optional[ListInvitationsQueryParamStatus],
+        FieldMetadata(query=QueryParamMetadata(style="form", explode=True)),
+    ] = None
     r"""Filter invitations based on their status"""
-    
+
 
 class ListInvitationsResponseTypedDict(TypedDict):
     result: List[InvitationTypedDict]
-    
+
 
 class ListInvitationsResponse(BaseModel):
     next: Callable[[], Optional[ListInvitationsResponse]]
-    
+
     result: List[Invitation]
-    

@@ -7,8 +7,7 @@ from typing import TypedDict
 
 class SvixURLTypedDict(TypedDict):
     svix_url: str
-    
+
 
 class SvixURL(BaseModel):
     svix_url: str
-    

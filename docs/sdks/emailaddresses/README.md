@@ -23,7 +23,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.email_addresses.create(request={
     "user_id": "user_12345",
     "email_address": "example@clerk.com",
@@ -69,7 +68,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.email_addresses.get(email_address_id="email_address_id_example")
 
 if res is not None:
@@ -109,7 +107,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.email_addresses.delete(email_address_id="email_address_id_example")
 
@@ -151,11 +148,7 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
-res = s.email_addresses.update(email_address_id="email_address_id_example", request_body={
-    "verified": False,
-    "primary": True,
-})
+res = s.email_addresses.update(email_address_id="email_address_id_example", verified=False, primary=True)
 
 if res is not None:
     # handle response
@@ -165,11 +158,12 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     | Example                                                                                         |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `email_address_id`                                                                              | *str*                                                                                           | :heavy_check_mark:                                                                              | The ID of the email address to update                                                           | email_address_id_example                                                                        |
-| `request_body`                                                                                  | [Optional[models.UpdateEmailAddressRequestBody]](../../models/updateemailaddressrequestbody.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |                                                                                                 |
-| `retries`                                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |                                                                                                 |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `email_address_id`                                                  | *str*                                                               | :heavy_check_mark:                                                  | The ID of the email address to update                               | email_address_id_example                                            |
+| `verified`                                                          | *OptionalNullable[bool]*                                            | :heavy_minus_sign:                                                  | The email address will be marked as verified.                       | false                                                               |
+| `primary`                                                           | *OptionalNullable[bool]*                                            | :heavy_minus_sign:                                                  | Set this email address as the primary email address for the user.   | true                                                                |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
 

@@ -24,7 +24,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organization_memberships.create(organization_id="org_123", user_id="user_456", role="admin")
 
 if res is not None:
@@ -67,17 +66,15 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organization_memberships.list(organization_id="org_789", limit=20, offset=10, order_by="+created_at")
 
 if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
-
 
 ```
 
@@ -115,7 +112,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.organization_memberships.update(organization_id="org_12345", user_id="user_67890", role="admin")
 
@@ -159,7 +155,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.organization_memberships.delete(organization_id="org_12345", user_id="user_67890")
 
 if res is not None:
@@ -202,7 +197,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.organization_memberships.update_metadata(organization_id="org_123456", user_id="user_654321", public_metadata={}, private_metadata={})
 
