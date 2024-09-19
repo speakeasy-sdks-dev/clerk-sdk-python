@@ -20,7 +20,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.testing_tokens.create()
 
 if res is not None:

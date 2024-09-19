@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class DeleteRedirectURLRequestTypedDict(TypedDict):
     id: str
     r"""The ID of the redirect URL"""
-    
+
 
 class DeleteRedirectURLRequest(BaseModel):
-    id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the redirect URL"""
-    
