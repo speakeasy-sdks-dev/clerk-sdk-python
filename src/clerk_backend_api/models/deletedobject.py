@@ -11,11 +11,13 @@ class DeletedObjectTypedDict(TypedDict):
     deleted: bool
     id: NotRequired[str]
     slug: NotRequired[str]
-    
+
 
 class DeletedObject(BaseModel):
     object: str
+
     deleted: bool
+
     id: Optional[str] = None
+
     slug: Optional[str] = None
-    

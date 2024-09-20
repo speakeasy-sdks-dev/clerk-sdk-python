@@ -12,14 +12,14 @@ class RevokeOrganizationInvitationRequestBodyTypedDict(TypedDict):
     r"""The ID of the user that revokes the invitation.
     Must be an administrator in the organization.
     """
-    
+
 
 class RevokeOrganizationInvitationRequestBody(BaseModel):
     requesting_user_id: str
     r"""The ID of the user that revokes the invitation.
     Must be an administrator in the organization.
     """
-    
+
 
 class RevokeOrganizationInvitationRequestTypedDict(TypedDict):
     organization_id: str
@@ -27,12 +27,20 @@ class RevokeOrganizationInvitationRequestTypedDict(TypedDict):
     invitation_id: str
     r"""The organization invitation ID."""
     request_body: RevokeOrganizationInvitationRequestBodyTypedDict
-    
+
 
 class RevokeOrganizationInvitationRequest(BaseModel):
-    organization_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    organization_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The organization ID."""
-    invitation_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    invitation_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The organization invitation ID."""
-    request_body: Annotated[RevokeOrganizationInvitationRequestBody, FieldMetadata(request=RequestMetadata(media_type="application/json"))]
-    
+
+    request_body: Annotated[
+        RevokeOrganizationInvitationRequestBody,
+        FieldMetadata(request=RequestMetadata(media_type="application/json")),
+    ]

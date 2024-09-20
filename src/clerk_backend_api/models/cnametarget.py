@@ -12,13 +12,14 @@ class CNameTargetTypedDict(TypedDict):
     r"""Denotes whether this CNAME target is required to be set in order for the domain to be considered deployed.
 
     """
-    
+
 
 class CNameTarget(BaseModel):
     host: str
+
     value: str
+
     required: bool
     r"""Denotes whether this CNAME target is required to be set in order for the domain to be considered deployed.
 
     """
-    
