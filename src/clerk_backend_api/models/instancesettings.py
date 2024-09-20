@@ -9,7 +9,9 @@ from typing_extensions import NotRequired
 
 class InstanceSettingsObject(str, Enum):
     r"""String representing the object's type. Objects of the same type share the same value."""
+
     INSTANCE_SETTINGS = "instance_settings"
+
 
 class InstanceSettingsTypedDict(TypedDict):
     object: NotRequired[InstanceSettingsObject]
@@ -19,14 +21,18 @@ class InstanceSettingsTypedDict(TypedDict):
     from_email_address: NotRequired[str]
     progressive_sign_up: NotRequired[bool]
     enhanced_email_deliverability: NotRequired[bool]
-    
+
 
 class InstanceSettings(BaseModel):
     object: Optional[InstanceSettingsObject] = None
     r"""String representing the object's type. Objects of the same type share the same value."""
+
     id: Optional[str] = None
+
     restricted_to_allowlist: Optional[bool] = None
+
     from_email_address: Optional[str] = None
+
     progressive_sign_up: Optional[bool] = None
+
     enhanced_email_deliverability: Optional[bool] = None
-    
