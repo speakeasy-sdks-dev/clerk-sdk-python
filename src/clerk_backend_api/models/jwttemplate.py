@@ -10,13 +10,14 @@ from typing_extensions import NotRequired
 class JWTTemplateObject(str, Enum):
     JWT_TEMPLATE = "jwt_template"
 
+
 class ClaimsTypedDict(TypedDict):
     pass
-    
+
 
 class Claims(BaseModel):
     pass
-    
+
 
 class JWTTemplateTypedDict(TypedDict):
     object: JWTTemplateObject
@@ -35,23 +36,31 @@ class JWTTemplateTypedDict(TypedDict):
     """
     custom_signing_key: NotRequired[bool]
     signing_algorithm: NotRequired[str]
-    
+
 
 class JWTTemplate(BaseModel):
     object: JWTTemplateObject
+
     id: str
+
     name: str
+
     claims: Claims
+
     lifetime: int
+
     allowed_clock_skew: int
+
     created_at: int
     r"""Unix timestamp of creation.
 
     """
+
     updated_at: int
     r"""Unix timestamp of last update.
 
     """
+
     custom_signing_key: Optional[bool] = None
+
     signing_algorithm: Optional[str] = None
-    

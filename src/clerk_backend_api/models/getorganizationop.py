@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class GetOrganizationRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID or slug of the organization"""
-    
+
 
 class GetOrganizationRequest(BaseModel):
-    organization_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    organization_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID or slug of the organization"""
-    

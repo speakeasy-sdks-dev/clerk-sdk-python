@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class DeleteOAuthApplicationRequestTypedDict(TypedDict):
     oauth_application_id: str
     r"""The ID of the OAuth application to delete"""
-    
+
 
 class DeleteOAuthApplicationRequest(BaseModel):
-    oauth_application_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    oauth_application_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the OAuth application to delete"""
-    
