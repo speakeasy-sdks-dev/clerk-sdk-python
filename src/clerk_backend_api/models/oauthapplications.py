@@ -12,12 +12,12 @@ class OAuthApplicationsTypedDict(TypedDict):
     r"""Total number of OAuth applications
 
     """
-    
+
 
 class OAuthApplications(BaseModel):
     data: List[OAuthApplication]
+
     total_count: int
     r"""Total number of OAuth applications
 
     """
-    
