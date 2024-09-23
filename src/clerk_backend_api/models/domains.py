@@ -12,12 +12,12 @@ class DomainsTypedDict(TypedDict):
     r"""Total number of domains
 
     """
-    
+
 
 class Domains(BaseModel):
     data: List[Domain]
+
     total_count: int
     r"""Total number of domains
 
     """
-    

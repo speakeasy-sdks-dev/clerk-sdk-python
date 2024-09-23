@@ -20,7 +20,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 s.jwks.get()
 
 # Use the SDK ...

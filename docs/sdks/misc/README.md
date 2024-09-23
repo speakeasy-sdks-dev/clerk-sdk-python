@@ -19,7 +19,6 @@ from clerk_backend_api import Clerk
 
 s = Clerk()
 
-
 s.misc.get_public_interstitial(frontend_api="frontend-api_1a2b3c4d", publishable_key="pub_1a2b3c4d")
 
 # Use the SDK ...
