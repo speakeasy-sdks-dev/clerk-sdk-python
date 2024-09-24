@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class RevokeInvitationRequestTypedDict(TypedDict):
     invitation_id: str
     r"""The ID of the invitation to be revoked"""
-    
+
 
 class RevokeInvitationRequest(BaseModel):
-    invitation_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    invitation_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the invitation to be revoked"""
-    

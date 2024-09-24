@@ -24,7 +24,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.domains.list()
 
 if res is not None:
@@ -66,7 +65,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.domains.add(request={
     "name": "example.com",
@@ -112,7 +110,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.domains.delete(domain_id="domain_12345")
 
@@ -160,7 +157,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.domains.update(domain_id="domain_12345", name="example.com", proxy_url="http://proxy.example.com")
 

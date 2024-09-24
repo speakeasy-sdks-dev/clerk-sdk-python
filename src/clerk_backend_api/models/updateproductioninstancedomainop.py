@@ -9,9 +9,8 @@ from typing_extensions import NotRequired
 class UpdateProductionInstanceDomainRequestBodyTypedDict(TypedDict):
     home_url: NotRequired[str]
     r"""The new home URL of the production instance e.g. https://www.example.com"""
-    
+
 
 class UpdateProductionInstanceDomainRequestBody(BaseModel):
     home_url: Optional[str] = None
     r"""The new home URL of the production instance e.g. https://www.example.com"""
-    

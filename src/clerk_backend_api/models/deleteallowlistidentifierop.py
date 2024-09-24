@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class DeleteAllowlistIdentifierRequestTypedDict(TypedDict):
     identifier_id: str
     r"""The ID of the identifier to delete from the allow-list"""
-    
+
 
 class DeleteAllowlistIdentifierRequest(BaseModel):
-    identifier_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    identifier_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the identifier to delete from the allow-list"""
-    
