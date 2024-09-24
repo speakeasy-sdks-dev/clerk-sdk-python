@@ -22,7 +22,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.allowlist_identifiers.list()
 
 if res is not None:
@@ -61,7 +60,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.allowlist_identifiers.create(request={
     "identifier": "user@example.com",
@@ -105,7 +103,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.allowlist_identifiers.delete(identifier_id="example_identifier_id")
 
