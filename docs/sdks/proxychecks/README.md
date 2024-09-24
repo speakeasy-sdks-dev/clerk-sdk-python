@@ -27,7 +27,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.proxy_checks.verify(request={
     "domain_id": "domain_32hfu3e",
     "proxy_url": "https://example.com/__clerk",

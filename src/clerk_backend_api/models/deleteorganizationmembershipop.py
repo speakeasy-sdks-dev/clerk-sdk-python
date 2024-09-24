@@ -12,11 +12,15 @@ class DeleteOrganizationMembershipRequestTypedDict(TypedDict):
     r"""The ID of the organization the membership belongs to"""
     user_id: str
     r"""The ID of the user that this membership belongs to"""
-    
+
 
 class DeleteOrganizationMembershipRequest(BaseModel):
-    organization_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    organization_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the organization the membership belongs to"""
-    user_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+
+    user_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the user that this membership belongs to"""
-    

@@ -12,12 +12,12 @@ class OrganizationsTypedDict(TypedDict):
     r"""Total number of organizations
 
     """
-    
+
 
 class Organizations(BaseModel):
     data: List[Organization]
+
     total_count: int
     r"""Total number of organizations
 
     """
-    
