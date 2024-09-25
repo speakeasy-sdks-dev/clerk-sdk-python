@@ -12,12 +12,12 @@ class SAMLConnectionsTypedDict(TypedDict):
     r"""Total number of SAML Connections
 
     """
-    
+
 
 class SAMLConnections(BaseModel):
     data: List[SAMLConnection]
+
     total_count: int
     r"""Total number of SAML Connections
 
     """
-    

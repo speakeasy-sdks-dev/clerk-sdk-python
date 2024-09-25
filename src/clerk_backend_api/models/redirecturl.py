@@ -9,6 +9,7 @@ from typing import TypedDict
 class RedirectURLObject(str, Enum):
     REDIRECT_URL = "redirect_url"
 
+
 class RedirectURLTypedDict(TypedDict):
     object: RedirectURLObject
     id: str
@@ -21,18 +22,21 @@ class RedirectURLTypedDict(TypedDict):
     r"""Unix timestamp of last update.
 
     """
-    
+
 
 class RedirectURL(BaseModel):
     object: RedirectURLObject
+
     id: str
+
     url: str
+
     created_at: int
     r"""Unix timestamp of creation.
 
     """
+
     updated_at: int
     r"""Unix timestamp of last update.
 
     """
-    

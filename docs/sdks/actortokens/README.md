@@ -22,7 +22,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.actor_tokens.create(request={
     "user_id": "user_1a2b3c",
     "actor": {
@@ -69,7 +68,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.actor_tokens.revoke(actor_token_id="act_tok_abcdefghijk")
 
