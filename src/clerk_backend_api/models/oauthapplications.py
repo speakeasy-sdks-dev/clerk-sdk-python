@@ -7,6 +7,8 @@ from typing import List, TypedDict
 
 
 class OAuthApplicationsTypedDict(TypedDict):
+    r"""A list of OAuth applications"""
+
     data: List[OAuthApplicationTypedDict]
     total_count: int
     r"""Total number of OAuth applications
@@ -15,6 +17,8 @@ class OAuthApplicationsTypedDict(TypedDict):
 
 
 class OAuthApplications(BaseModel):
+    r"""A list of OAuth applications"""
+
     data: List[OAuthApplication]
 
     total_count: int

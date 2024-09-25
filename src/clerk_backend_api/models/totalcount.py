@@ -13,6 +13,8 @@ class TotalCountObject(str, Enum):
 
 
 class TotalCountTypedDict(TypedDict):
+    r"""Success"""
+
     object: TotalCountObject
     r"""String representing the object's type. Objects of the same type share the same value.
 
@@ -21,6 +23,8 @@ class TotalCountTypedDict(TypedDict):
 
 
 class TotalCount(BaseModel):
+    r"""Success"""
+
     object: TotalCountObject
     r"""String representing the object's type. Objects of the same type share the same value.
 

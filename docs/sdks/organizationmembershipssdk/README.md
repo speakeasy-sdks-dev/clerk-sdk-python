@@ -47,10 +47,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,403,404,422    | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError69 | 400,403,404,422           | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## list
@@ -94,10 +94,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 401,422            | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError70 | 401,422                   | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## update
@@ -136,10 +136,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,404,422        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError71 | 400,404,422               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## delete
@@ -177,10 +177,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,404        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError72 | 400,401,404               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## update_metadata
@@ -222,7 +222,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,404,422        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError73 | 400,404,422               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |

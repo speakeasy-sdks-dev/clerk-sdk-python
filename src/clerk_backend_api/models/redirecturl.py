@@ -11,6 +11,8 @@ class RedirectURLObject(str, Enum):
 
 
 class RedirectURLTypedDict(TypedDict):
+    r"""List of Redirect URLs"""
+
     object: RedirectURLObject
     id: str
     url: str
@@ -25,6 +27,8 @@ class RedirectURLTypedDict(TypedDict):
 
 
 class RedirectURL(BaseModel):
+    r"""List of Redirect URLs"""
+
     object: RedirectURLObject
 
     id: str

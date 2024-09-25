@@ -50,10 +50,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object        | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| models.ClerkErrors  | 400,401,403,404,422 | application/json    |
-| models.SDKError     | 4xx-5xx             | */*                 |
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ClerkErrorsError7 | 400,401,403,404,422      | application/json         |
+| models.SDKError          | 4xx-5xx                  | */*                      |
 
 
 ## get
@@ -90,10 +90,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,403,404    | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ClerkErrorsError8 | 400,401,403,404          | application/json         |
+| models.SDKError          | 4xx-5xx                  | */*                      |
 
 
 ## delete
@@ -130,10 +130,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,403,404    | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ClerkErrorsError9 | 400,401,403,404          | application/json         |
+| models.SDKError          | 4xx-5xx                  | */*                      |
 
 
 ## update
@@ -173,7 +173,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,403,404    | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError10 | 400,401,403,404           | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |

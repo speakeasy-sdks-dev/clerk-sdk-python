@@ -14,6 +14,8 @@ class InstanceSettingsObject(str, Enum):
 
 
 class InstanceSettingsTypedDict(TypedDict):
+    r"""InstanceSettings Server API"""
+
     object: NotRequired[InstanceSettingsObject]
     r"""String representing the object's type. Objects of the same type share the same value."""
     id: NotRequired[str]
@@ -24,6 +26,8 @@ class InstanceSettingsTypedDict(TypedDict):
 
 
 class InstanceSettings(BaseModel):
+    r"""InstanceSettings Server API"""
+
     object: Optional[InstanceSettingsObject] = None
     r"""String representing the object's type. Objects of the same type share the same value."""
 

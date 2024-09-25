@@ -70,8 +70,8 @@ class BlocklistIdentifiersSDK(BaseSDK):
                 http_res.text, Optional[models.BlocklistIdentifiers]
             )
         if utils.match_response(http_res, ["401", "402"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError39Data)
+            raise models.ClerkErrorsError39(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -147,8 +147,8 @@ class BlocklistIdentifiersSDK(BaseSDK):
                 http_res.text, Optional[models.BlocklistIdentifiers]
             )
         if utils.match_response(http_res, ["401", "402"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError39Data)
+            raise models.ClerkErrorsError39(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -245,8 +245,8 @@ class BlocklistIdentifiersSDK(BaseSDK):
                 http_res.text, Optional[models.BlocklistIdentifier]
             )
         if utils.match_response(http_res, ["400", "402", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError40Data)
+            raise models.ClerkErrorsError40(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -343,8 +343,8 @@ class BlocklistIdentifiersSDK(BaseSDK):
                 http_res.text, Optional[models.BlocklistIdentifier]
             )
         if utils.match_response(http_res, ["400", "402", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError40Data)
+            raise models.ClerkErrorsError40(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -425,8 +425,8 @@ class BlocklistIdentifiersSDK(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.DeletedObject])
         if utils.match_response(http_res, ["402", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError41Data)
+            raise models.ClerkErrorsError41(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -507,8 +507,8 @@ class BlocklistIdentifiersSDK(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.DeletedObject])
         if utils.match_response(http_res, ["402", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError41Data)
+            raise models.ClerkErrorsError41(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res

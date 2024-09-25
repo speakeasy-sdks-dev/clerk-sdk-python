@@ -21,6 +21,8 @@ class TemplateObject(str, Enum):
 
 
 class TemplateTypedDict(TypedDict):
+    r"""Success"""
+
     id: NotRequired[str]
     object: NotRequired[TemplateObject]
     r"""String representing the object's type. Objects of the same type share the same value.
@@ -68,6 +70,8 @@ class TemplateTypedDict(TypedDict):
 
 
 class Template(BaseModel):
+    r"""Success"""
+
     id: Optional[str] = None
 
     object: Optional[TemplateObject] = None

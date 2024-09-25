@@ -6,8 +6,12 @@ from typing import TypedDict
 
 
 class SvixURLTypedDict(TypedDict):
+    r"""Response that contains a temporary Svix URL to access management dashboard"""
+
     svix_url: str
 
 
 class SvixURL(BaseModel):
+    r"""Response that contains a temporary Svix URL to access management dashboard"""
+
     svix_url: str

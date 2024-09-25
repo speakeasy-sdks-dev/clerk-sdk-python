@@ -139,8 +139,8 @@ class OrganizationInvitationsSDK(BaseSDK):
         if utils.match_response(
             http_res, ["400", "403", "404", "422"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError63Data)
+            raise models.ClerkErrorsError63(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -283,8 +283,8 @@ class OrganizationInvitationsSDK(BaseSDK):
         if utils.match_response(
             http_res, ["400", "403", "404", "422"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError63Data)
+            raise models.ClerkErrorsError63(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -406,8 +406,8 @@ class OrganizationInvitationsSDK(BaseSDK):
                 next=next_func,
             )
         if utils.match_response(http_res, ["400", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError64Data)
+            raise models.ClerkErrorsError64(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -529,8 +529,8 @@ class OrganizationInvitationsSDK(BaseSDK):
                 next=next_func,
             )
         if utils.match_response(http_res, ["400", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError64Data)
+            raise models.ClerkErrorsError64(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -637,8 +637,8 @@ class OrganizationInvitationsSDK(BaseSDK):
         if utils.match_response(
             http_res, ["400", "403", "404", "422"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError65Data)
+            raise models.ClerkErrorsError65(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -745,8 +745,8 @@ class OrganizationInvitationsSDK(BaseSDK):
         if utils.match_response(
             http_res, ["400", "403", "404", "422"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError65Data)
+            raise models.ClerkErrorsError65(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -867,8 +867,8 @@ class OrganizationInvitationsSDK(BaseSDK):
                 next=next_func,
             )
         if utils.match_response(http_res, ["400", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError66Data)
+            raise models.ClerkErrorsError66(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -989,8 +989,8 @@ class OrganizationInvitationsSDK(BaseSDK):
                 next=next_func,
             )
         if utils.match_response(http_res, ["400", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError66Data)
+            raise models.ClerkErrorsError66(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -1076,8 +1076,8 @@ class OrganizationInvitationsSDK(BaseSDK):
                 http_res.text, Optional[models.OrganizationInvitation]
             )
         if utils.match_response(http_res, ["400", "403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError67Data)
+            raise models.ClerkErrorsError67(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -1163,8 +1163,8 @@ class OrganizationInvitationsSDK(BaseSDK):
                 http_res.text, Optional[models.OrganizationInvitation]
             )
         if utils.match_response(http_res, ["400", "403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError67Data)
+            raise models.ClerkErrorsError67(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -1266,8 +1266,8 @@ class OrganizationInvitationsSDK(BaseSDK):
                 http_res.text, Optional[models.OrganizationInvitation]
             )
         if utils.match_response(http_res, ["400", "403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError68Data)
+            raise models.ClerkErrorsError68(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -1369,8 +1369,8 @@ class OrganizationInvitationsSDK(BaseSDK):
                 http_res.text, Optional[models.OrganizationInvitation]
             )
         if utils.match_response(http_res, ["400", "403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError68Data)
+            raise models.ClerkErrorsError68(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res

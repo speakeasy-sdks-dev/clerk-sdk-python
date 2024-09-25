@@ -91,8 +91,8 @@ class EmailAddresses(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "403", "404", "422"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError3Data)
+            raise models.ClerkErrorsError3(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -189,8 +189,8 @@ class EmailAddresses(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "403", "404", "422"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError3Data)
+            raise models.ClerkErrorsError3(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -273,8 +273,8 @@ class EmailAddresses(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError4Data)
+            raise models.ClerkErrorsError4(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -357,8 +357,8 @@ class EmailAddresses(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError4Data)
+            raise models.ClerkErrorsError4(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -441,8 +441,8 @@ class EmailAddresses(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError5Data)
+            raise models.ClerkErrorsError5(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -525,8 +525,8 @@ class EmailAddresses(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError5Data)
+            raise models.ClerkErrorsError5(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -624,8 +624,8 @@ class EmailAddresses(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError6Data)
+            raise models.ClerkErrorsError6(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -723,8 +723,8 @@ class EmailAddresses(BaseSDK):
         if utils.match_response(
             http_res, ["400", "401", "403", "404"], "application/json"
         ):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError6Data)
+            raise models.ClerkErrorsError6(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res

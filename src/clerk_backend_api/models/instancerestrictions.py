@@ -14,6 +14,8 @@ class InstanceRestrictionsObject(str, Enum):
 
 
 class InstanceRestrictionsTypedDict(TypedDict):
+    r"""Success"""
+
     object: NotRequired[InstanceRestrictionsObject]
     r"""String representing the object's type. Objects of the same type share the same value."""
     allowlist: NotRequired[bool]
@@ -23,6 +25,8 @@ class InstanceRestrictionsTypedDict(TypedDict):
 
 
 class InstanceRestrictions(BaseModel):
+    r"""Success"""
+
     object: Optional[InstanceRestrictionsObject] = None
     r"""String representing the object's type. Objects of the same type share the same value."""
 

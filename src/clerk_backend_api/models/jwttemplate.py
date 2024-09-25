@@ -20,6 +20,8 @@ class Claims(BaseModel):
 
 
 class JWTTemplateTypedDict(TypedDict):
+    r"""List of JWT templates"""
+
     object: JWTTemplateObject
     id: str
     name: str
@@ -39,6 +41,8 @@ class JWTTemplateTypedDict(TypedDict):
 
 
 class JWTTemplate(BaseModel):
+    r"""List of JWT templates"""
+
     object: JWTTemplateObject
 
     id: str

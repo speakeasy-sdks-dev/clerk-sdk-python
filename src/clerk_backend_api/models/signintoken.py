@@ -25,6 +25,8 @@ class SignInTokenStatus(str, Enum):
 
 
 class SignInTokenTypedDict(TypedDict):
+    r"""Success"""
+
     object: SignInTokenObject
     id: str
     status: SignInTokenStatus
@@ -42,6 +44,8 @@ class SignInTokenTypedDict(TypedDict):
 
 
 class SignInToken(BaseModel):
+    r"""Success"""
+
     object: SignInTokenObject
 
     id: str

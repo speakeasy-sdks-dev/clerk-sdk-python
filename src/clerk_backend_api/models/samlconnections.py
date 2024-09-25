@@ -7,6 +7,8 @@ from typing import List, TypedDict
 
 
 class SAMLConnectionsTypedDict(TypedDict):
+    r"""A list of SAML Connections"""
+
     data: List[SAMLConnectionTypedDict]
     total_count: int
     r"""Total number of SAML Connections
@@ -15,6 +17,8 @@ class SAMLConnectionsTypedDict(TypedDict):
 
 
 class SAMLConnections(BaseModel):
+    r"""A list of SAML Connections"""
+
     data: List[SAMLConnection]
 
     total_count: int

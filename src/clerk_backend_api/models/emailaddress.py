@@ -250,6 +250,8 @@ Verification = Union[Otp, Admin, Oauth]
 
 
 class EmailAddressTypedDict(TypedDict):
+    r"""Success"""
+
     object: EmailAddressObject
     r"""String representing the object's type. Objects of the same type share the same value.
 
@@ -270,6 +272,8 @@ class EmailAddressTypedDict(TypedDict):
 
 
 class EmailAddress(BaseModel):
+    r"""Success"""
+
     object: EmailAddressObject
     r"""String representing the object's type. Objects of the same type share the same value.
 

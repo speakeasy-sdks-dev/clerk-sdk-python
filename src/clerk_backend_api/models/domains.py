@@ -7,6 +7,8 @@ from typing import List, TypedDict
 
 
 class DomainsTypedDict(TypedDict):
+    r"""A list of domains"""
+
     data: List[DomainTypedDict]
     total_count: int
     r"""Total number of domains
@@ -15,6 +17,8 @@ class DomainsTypedDict(TypedDict):
 
 
 class Domains(BaseModel):
+    r"""A list of domains"""
+
     data: List[Domain]
 
     total_count: int

@@ -7,6 +7,8 @@ from typing_extensions import NotRequired
 
 
 class DeletedObjectTypedDict(TypedDict):
+    r"""Deleted Object"""
+
     object: str
     deleted: bool
     id: NotRequired[str]
@@ -14,6 +16,8 @@ class DeletedObjectTypedDict(TypedDict):
 
 
 class DeletedObject(BaseModel):
+    r"""Deleted Object"""
+
     object: str
 
     deleted: bool

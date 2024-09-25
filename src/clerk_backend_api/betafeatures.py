@@ -92,8 +92,8 @@ class BetaFeatures(BaseSDK):
                 http_res.text, Optional[models.InstanceSettings]
             )
         if utils.match_response(http_res, ["402", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError42Data)
+            raise models.ClerkErrorsError42(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -190,8 +190,8 @@ class BetaFeatures(BaseSDK):
                 http_res.text, Optional[models.InstanceSettings]
             )
         if utils.match_response(http_res, ["402", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError42Data)
+            raise models.ClerkErrorsError42(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -295,8 +295,8 @@ class BetaFeatures(BaseSDK):
         if utils.match_response(http_res, "202", "*"):
             return
         if utils.match_response(http_res, ["400", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError43Data)
+            raise models.ClerkErrorsError43(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -400,8 +400,8 @@ class BetaFeatures(BaseSDK):
         if utils.match_response(http_res, "202", "*"):
             return
         if utils.match_response(http_res, ["400", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError43Data)
+            raise models.ClerkErrorsError43(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -502,8 +502,8 @@ class BetaFeatures(BaseSDK):
         if utils.match_response(http_res, "202", "*"):
             return
         if utils.match_response(http_res, ["400", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError50Data)
+            raise models.ClerkErrorsError50(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -604,8 +604,8 @@ class BetaFeatures(BaseSDK):
         if utils.match_response(http_res, "202", "*"):
             return
         if utils.match_response(http_res, ["400", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError50Data)
+            raise models.ClerkErrorsError50(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res

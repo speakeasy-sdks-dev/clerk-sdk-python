@@ -57,6 +57,8 @@ class ExternalAccount(BaseModel):
 
 
 class SignUpTypedDict(TypedDict):
+    r"""Success"""
+
     object: SignUpObject
     id: str
     status: SignUpStatus
@@ -83,6 +85,8 @@ class SignUpTypedDict(TypedDict):
 
 
 class SignUp(BaseModel):
+    r"""Success"""
+
     object: SignUpObject
 
     id: str

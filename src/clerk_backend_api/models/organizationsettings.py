@@ -20,6 +20,8 @@ class DomainsEnrollmentModes(str, Enum):
 
 
 class OrganizationSettingsTypedDict(TypedDict):
+    r"""Success"""
+
     object: OrganizationSettingsObject
     r"""String representing the object's type. Objects of the same type share the same value."""
     enabled: bool
@@ -37,6 +39,8 @@ class OrganizationSettingsTypedDict(TypedDict):
 
 
 class OrganizationSettings(BaseModel):
+    r"""Success"""
+
     object: OrganizationSettingsObject
     r"""String representing the object's type. Objects of the same type share the same value."""
 

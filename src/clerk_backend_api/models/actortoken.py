@@ -33,6 +33,8 @@ class ActorTokenActor(BaseModel):
 
 
 class ActorTokenTypedDict(TypedDict):
+    r"""Success"""
+
     object: ActorTokenObject
     id: str
     status: ActorTokenStatus
@@ -51,6 +53,8 @@ class ActorTokenTypedDict(TypedDict):
 
 
 class ActorToken(BaseModel):
+    r"""Success"""
+
     object: ActorTokenObject
 
     id: str

@@ -10,6 +10,8 @@ from typing import List, TypedDict
 
 
 class OrganizationInvitationsTypedDict(TypedDict):
+    r"""A list of organization invitations"""
+
     data: List[OrganizationInvitationTypedDict]
     total_count: int
     r"""Total number of organization invitations
@@ -18,6 +20,8 @@ class OrganizationInvitationsTypedDict(TypedDict):
 
 
 class OrganizationInvitations(BaseModel):
+    r"""A list of organization invitations"""
+
     data: List[OrganizationInvitation]
 
     total_count: int

@@ -11,6 +11,8 @@ class TestingTokenObject(str, Enum):
 
 
 class TestingTokenTypedDict(TypedDict):
+    r"""A Testing Token"""
+
     __test__ = False  # pyright: ignore[reportGeneralTypeIssues]
 
     object: TestingTokenObject
@@ -23,6 +25,8 @@ class TestingTokenTypedDict(TypedDict):
 
 
 class TestingToken(BaseModel):
+    r"""A Testing Token"""
+
     __test__ = False
 
     object: TestingTokenObject

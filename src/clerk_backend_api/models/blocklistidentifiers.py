@@ -7,6 +7,8 @@ from typing import List, TypedDict
 
 
 class BlocklistIdentifiersTypedDict(TypedDict):
+    r"""Success"""
+
     data: List[BlocklistIdentifierTypedDict]
     total_count: int
     r"""Total number of blocklist identifiers
@@ -15,6 +17,8 @@ class BlocklistIdentifiersTypedDict(TypedDict):
 
 
 class BlocklistIdentifiers(BaseModel):
+    r"""Success"""
+
     data: List[BlocklistIdentifier]
 
     total_count: int

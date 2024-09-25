@@ -20,6 +20,8 @@ class IdentifierType(str, Enum):
 
 
 class AllowlistIdentifierTypedDict(TypedDict):
+    r"""Success"""
+
     object: NotRequired[AllowlistIdentifierObject]
     r"""String representing the object's type. Objects of the same type share the same value.
 
@@ -43,6 +45,8 @@ class AllowlistIdentifierTypedDict(TypedDict):
 
 
 class AllowlistIdentifier(BaseModel):
+    r"""Success"""
+
     object: Optional[AllowlistIdentifierObject] = None
     r"""String representing the object's type. Objects of the same type share the same value.
 

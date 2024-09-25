@@ -414,10 +414,10 @@ s.misc.get_public_interstitial(frontend_api="frontend-api_1a2b3c4d", publishable
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,404        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object             | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| models.ClerkErrorsError1 | 400,401,404              | application/json         |
+| models.SDKError          | 4xx-5xx                  | */*                      |
 
 ### Example
 
@@ -438,8 +438,8 @@ try:
         # handle response
         pass
 
-except models.ClerkErrors as e:
-    # handle e.data: models.ClerkErrorsData
+except models.ClerkErrorsError1 as e:
+    # handle e.data: models.ClerkErrorsError1Data
     raise(e)
 except models.SDKError as e:
     # handle exception

@@ -48,10 +48,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,422        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError16 | 400,401,422               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## get
@@ -90,10 +90,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,404        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError17 | 400,401,404               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## upsert
@@ -139,10 +139,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object            | Status Code             | Content Type            |
-| ----------------------- | ----------------------- | ----------------------- |
-| models.ClerkErrors      | 400,401,402,403,404,422 | application/json        |
-| models.SDKError         | 4xx-5xx                 | */*                     |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError18 | 400,401,402,403,404,422   | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## revert
@@ -181,10 +181,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,402,404    | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError19 | 400,401,402,404           | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## preview
@@ -226,10 +226,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,404,422    | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError20 | 400,401,404,422           | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## toggle_delivery
@@ -271,7 +271,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,401,404        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError21 | 400,401,404               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |

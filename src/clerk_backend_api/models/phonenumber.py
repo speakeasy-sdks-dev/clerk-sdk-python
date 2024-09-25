@@ -149,6 +149,8 @@ PhoneNumberVerification = Union[VerificationOTP, VerificationAdmin]
 
 
 class PhoneNumberTypedDict(TypedDict):
+    r"""Success"""
+
     object: PhoneNumberObject
     r"""String representing the object's type. Objects of the same type share the same value.
 
@@ -172,6 +174,8 @@ class PhoneNumberTypedDict(TypedDict):
 
 
 class PhoneNumber(BaseModel):
+    r"""Success"""
+
     object: PhoneNumberObject
     r"""String representing the object's type. Objects of the same type share the same value.
 

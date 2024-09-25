@@ -11,6 +11,8 @@ class ProxyCheckObject(str, Enum):
 
 
 class ProxyCheckTypedDict(TypedDict):
+    r"""Health check information about a domain's proxy configuration validation attempt."""
+
     object: ProxyCheckObject
     id: str
     domain_id: str
@@ -22,6 +24,8 @@ class ProxyCheckTypedDict(TypedDict):
 
 
 class ProxyCheck(BaseModel):
+    r"""Health check information about a domain's proxy configuration validation attempt."""
+
     object: ProxyCheckObject
 
     id: str

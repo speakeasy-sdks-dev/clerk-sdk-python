@@ -33,6 +33,8 @@ class InvitationStatus(str, Enum):
 
 
 class InvitationTypedDict(TypedDict):
+    r"""Success"""
+
     object: InvitationObject
     id: str
     email_address: str
@@ -51,6 +53,8 @@ class InvitationTypedDict(TypedDict):
 
 
 class Invitation(BaseModel):
+    r"""Success"""
+
     object: InvitationObject
 
     id: str

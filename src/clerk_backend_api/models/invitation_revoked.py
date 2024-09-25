@@ -31,6 +31,8 @@ class InvitationRevokedStatus(str, Enum):
 
 
 class InvitationRevokedTypedDict(TypedDict):
+    r"""Success"""
+
     object: InvitationRevokedObject
     id: str
     email_address: str
@@ -49,6 +51,8 @@ class InvitationRevokedTypedDict(TypedDict):
 
 
 class InvitationRevoked(BaseModel):
+    r"""Success"""
+
     object: InvitationRevokedObject
 
     id: str

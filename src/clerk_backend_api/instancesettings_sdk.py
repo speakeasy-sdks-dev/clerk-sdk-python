@@ -85,8 +85,8 @@ class InstanceSettingsSDK(BaseSDK):
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError49Data)
+            raise models.ClerkErrorsError49(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -177,8 +177,8 @@ class InstanceSettingsSDK(BaseSDK):
         if utils.match_response(http_res, "204", "*"):
             return
         if utils.match_response(http_res, "422", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError49Data)
+            raise models.ClerkErrorsError49(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -275,8 +275,8 @@ class InstanceSettingsSDK(BaseSDK):
                 http_res.text, Optional[models.InstanceRestrictions]
             )
         if utils.match_response(http_res, ["402", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError49Data)
+            raise models.ClerkErrorsError49(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -373,8 +373,8 @@ class InstanceSettingsSDK(BaseSDK):
                 http_res.text, Optional[models.InstanceRestrictions]
             )
         if utils.match_response(http_res, ["402", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError49Data)
+            raise models.ClerkErrorsError49(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -473,8 +473,8 @@ class InstanceSettingsSDK(BaseSDK):
                 http_res.text, Optional[models.OrganizationSettings]
             )
         if utils.match_response(http_res, ["402", "404", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError51Data)
+            raise models.ClerkErrorsError51(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -573,8 +573,8 @@ class InstanceSettingsSDK(BaseSDK):
                 http_res.text, Optional[models.OrganizationSettings]
             )
         if utils.match_response(http_res, ["402", "404", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError51Data)
+            raise models.ClerkErrorsError51(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res

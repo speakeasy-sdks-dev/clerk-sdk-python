@@ -15,6 +15,8 @@ class Object(str, Enum):
 
 
 class ClientTypedDict(TypedDict):
+    r"""Success"""
+
     object: Object
     r"""String representing the object's type. Objects of the same type share the same value.
 
@@ -42,6 +44,8 @@ class ClientTypedDict(TypedDict):
 
 
 class Client(BaseModel):
+    r"""Success"""
+
     object: Object
     r"""String representing the object's type. Objects of the same type share the same value.
 

@@ -107,8 +107,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 next=next_func,
             )
         if utils.match_response(http_res, ["400", "403", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError79Data)
+            raise models.ClerkErrorsError79(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -220,8 +220,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 next=next_func,
             )
         if utils.match_response(http_res, ["400", "403", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError79Data)
+            raise models.ClerkErrorsError79(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -320,8 +320,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 http_res.text, Optional[models.OAuthApplicationWithSecret]
             )
         if utils.match_response(http_res, ["400", "403", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError80Data)
+            raise models.ClerkErrorsError80(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -420,8 +420,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 http_res.text, Optional[models.OAuthApplicationWithSecret]
             )
         if utils.match_response(http_res, ["400", "403", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError80Data)
+            raise models.ClerkErrorsError80(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -504,8 +504,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 http_res.text, Optional[models.OAuthApplication]
             )
         if utils.match_response(http_res, ["403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError81Data)
+            raise models.ClerkErrorsError81(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -588,8 +588,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 http_res.text, Optional[models.OAuthApplication]
             )
         if utils.match_response(http_res, ["403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError81Data)
+            raise models.ClerkErrorsError81(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -690,8 +690,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 http_res.text, Optional[models.OAuthApplication]
             )
         if utils.match_response(http_res, ["403", "404", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError82Data)
+            raise models.ClerkErrorsError82(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -792,8 +792,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 http_res.text, Optional[models.OAuthApplication]
             )
         if utils.match_response(http_res, ["403", "404", "422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError82Data)
+            raise models.ClerkErrorsError82(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -875,8 +875,8 @@ class OAuthApplicationsSDK(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.DeletedObject])
         if utils.match_response(http_res, ["403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError83Data)
+            raise models.ClerkErrorsError83(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -958,8 +958,8 @@ class OAuthApplicationsSDK(BaseSDK):
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.DeletedObject])
         if utils.match_response(http_res, ["403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError83Data)
+            raise models.ClerkErrorsError83(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -1043,8 +1043,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 http_res.text, Optional[models.OAuthApplicationWithSecret]
             )
         if utils.match_response(http_res, ["403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError84Data)
+            raise models.ClerkErrorsError84(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
@@ -1128,8 +1128,8 @@ class OAuthApplicationsSDK(BaseSDK):
                 http_res.text, Optional[models.OAuthApplicationWithSecret]
             )
         if utils.match_response(http_res, ["403", "404"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError84Data)
+            raise models.ClerkErrorsError84(data=data)
         if utils.match_response(http_res, ["4XX", "5XX"], "*"):
             raise models.SDKError(
                 "API error occurred", http_res.status_code, http_res.text, http_res
