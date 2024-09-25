@@ -28,17 +28,15 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.o_auth_applications.list(limit=20, offset=10)
 
 if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
-
 
 ```
 
@@ -76,7 +74,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.o_auth_applications.create(request={
     "name": "Example App",
@@ -123,7 +120,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.o_auth_applications.get(oauth_application_id="oauth_app_12345")
 
 if res is not None:
@@ -163,7 +159,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.o_auth_applications.update(oauth_application_id="oauth_app_67890", name="Updated OAuth App Name", callback_url="https://example.com/oauth/callback", scopes="profile email public_metadata private_metadata")
 
@@ -209,7 +204,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.o_auth_applications.delete(oauth_application_id="oauth_app_09876")
 
 if res is not None:
@@ -250,7 +244,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.o_auth_applications.rotate_secret(oauth_application_id="oauth_application_12345")
 
