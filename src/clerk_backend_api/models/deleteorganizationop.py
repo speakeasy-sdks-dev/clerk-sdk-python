@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class DeleteOrganizationRequestTypedDict(TypedDict):
     organization_id: str
     r"""The ID of the organization to delete"""
-    
+
 
 class DeleteOrganizationRequest(BaseModel):
-    organization_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    organization_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the organization to delete"""
-    

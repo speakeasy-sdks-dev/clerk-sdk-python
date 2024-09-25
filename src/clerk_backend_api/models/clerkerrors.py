@@ -9,19 +9,21 @@ from typing import List, Optional, TypedDict
 
 class ClerkErrorsMetaTypedDict(TypedDict):
     pass
-    
+
 
 class ClerkErrorsMeta(BaseModel):
     pass
-    
+
+
 class ClerkErrorsData(BaseModel):
     errors: List[ClerkError]
+
     meta: Optional[ClerkErrorsMeta] = None
-    
 
 
 class ClerkErrors(Exception):
     r"""Request was not successful"""
+
     data: ClerkErrorsData
 
     def __init__(self, data: ClerkErrorsData):
@@ -29,4 +31,3 @@ class ClerkErrors(Exception):
 
     def __str__(self) -> str:
         return utils.marshal_json(self.data, ClerkErrorsData)
-

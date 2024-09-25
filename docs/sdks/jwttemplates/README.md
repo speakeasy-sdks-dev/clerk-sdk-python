@@ -24,7 +24,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.jwt_templates.list()
 
 if res is not None:
@@ -62,7 +61,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.jwt_templates.create(request={
     "name": "Example Template",
@@ -112,7 +110,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.jwt_templates.get(template_id="template_123")
 
 if res is not None:
@@ -153,16 +150,7 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
-res = s.jwt_templates.update(template_id="<value>", request_body={
-    "name": "<value>",
-    "claims": {},
-    "lifetime": 8574.78,
-    "allowed_clock_skew": 245.55,
-    "custom_signing_key": False,
-    "signing_algorithm": "<value>",
-    "signing_key": "<value>",
-})
+res = s.jwt_templates.update(template_id="<value>", name="<value>", claims={}, lifetime=8574.77, allowed_clock_skew=5971.29, custom_signing_key=True, signing_algorithm="<value>", signing_key="<value>")
 
 if res is not None:
     # handle response
@@ -172,11 +160,17 @@ if res is not None:
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `template_id`                                                                                 | *str*                                                                                         | :heavy_check_mark:                                                                            | The ID of the JWT template to update                                                          |
-| `request_body`                                                                                | [Optional[models.UpdateJWTTemplateRequestBody]](../../models/updatejwttemplaterequestbody.md) | :heavy_minus_sign:                                                                            | N/A                                                                                           |
-| `retries`                                                                                     | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                              | :heavy_minus_sign:                                                                            | Configuration to override the default retry behavior of the client.                           |
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `template_id`                                                                       | *str*                                                                               | :heavy_check_mark:                                                                  | The ID of the JWT template to update                                                |
+| `name`                                                                              | *Optional[str]*                                                                     | :heavy_minus_sign:                                                                  | JWT template name                                                                   |
+| `claims`                                                                            | [Optional[models.UpdateJWTTemplateClaims]](../../models/updatejwttemplateclaims.md) | :heavy_minus_sign:                                                                  | JWT template claims in JSON format                                                  |
+| `lifetime`                                                                          | *OptionalNullable[float]*                                                           | :heavy_minus_sign:                                                                  | JWT token lifetime                                                                  |
+| `allowed_clock_skew`                                                                | *OptionalNullable[float]*                                                           | :heavy_minus_sign:                                                                  | JWT token allowed clock skew                                                        |
+| `custom_signing_key`                                                                | *Optional[bool]*                                                                    | :heavy_minus_sign:                                                                  | Whether a custom signing key/algorithm is also provided for this template           |
+| `signing_algorithm`                                                                 | *OptionalNullable[str]*                                                             | :heavy_minus_sign:                                                                  | The custom signing algorithm to use when minting JWTs                               |
+| `signing_key`                                                                       | *OptionalNullable[str]*                                                             | :heavy_minus_sign:                                                                  | The custom signing private key to use when minting JWTs                             |
+| `retries`                                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                    | :heavy_minus_sign:                                                                  | Configuration to override the default retry behavior of the client.                 |
 
 ### Response
 
@@ -202,7 +196,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.jwt_templates.delete(template_id="<value>")
 

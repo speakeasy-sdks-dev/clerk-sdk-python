@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class GetJWTTemplateRequestTypedDict(TypedDict):
     template_id: str
     r"""JWT Template ID"""
-    
+
 
 class GetJWTTemplateRequest(BaseModel):
-    template_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    template_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""JWT Template ID"""
-    

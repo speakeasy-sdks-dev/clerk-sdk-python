@@ -10,21 +10,22 @@ from typing_extensions import Annotated, NotRequired
 class DisableMFARequestTypedDict(TypedDict):
     user_id: str
     r"""The ID of the user whose MFA methods are to be disabled"""
-    
+
 
 class DisableMFARequest(BaseModel):
-    user_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    user_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the user whose MFA methods are to be disabled"""
-    
+
 
 class DisableMFAResponseBodyTypedDict(TypedDict):
     r"""Successful operation."""
-    
+
     user_id: NotRequired[str]
-    
+
 
 class DisableMFAResponseBody(BaseModel):
     r"""Successful operation."""
-    
+
     user_id: Optional[str] = None
-    

@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class RevokeSessionRequestTypedDict(TypedDict):
     session_id: str
     r"""The ID of the session"""
-    
+
 
 class RevokeSessionRequest(BaseModel):
-    session_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    session_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the session"""
-    
