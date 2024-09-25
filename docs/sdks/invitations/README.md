@@ -24,7 +24,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.invitations.create(request={
     "email_address": "user@example.com",
     "public_metadata": {},
@@ -72,17 +71,15 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.invitations.list(limit=20, offset=10, status=clerk_backend_api.ListInvitationsQueryParamStatus.PENDING)
 
 if res is not None:
     while True:
         # handle items
 
-        res = res.Next()
+        res = res.next()
         if res is None:
             break
-
 
 ```
 
@@ -121,7 +118,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.invitations.revoke(invitation_id="inv_123")
 
