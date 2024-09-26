@@ -24,7 +24,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.domains.list()
 
 if res is not None:
@@ -67,7 +66,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.domains.add(request={
     "name": "example.com",
     "is_satellite": True,
@@ -93,10 +91,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,402,422        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError46 | 400,402,422               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## delete
@@ -112,7 +110,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.domains.delete(domain_id="domain_12345")
 
@@ -135,10 +132,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 403,404            | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError47 | 403,404                   | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## update
@@ -160,7 +157,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.domains.update(domain_id="domain_12345", name="example.com", proxy_url="http://proxy.example.com")
 
@@ -185,7 +181,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,404,422        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError48 | 400,404,422               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
