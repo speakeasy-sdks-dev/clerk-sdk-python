@@ -22,7 +22,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.webhooks.create_svix_app()
 
 if res is not None:
@@ -43,10 +42,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400                | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError52 | 400                       | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## delete_svix_app
@@ -62,7 +61,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 s.webhooks.delete_svix_app()
 
 # Use the SDK ...
@@ -77,10 +75,10 @@ s.webhooks.delete_svix_app()
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400                | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError53 | 400                       | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## generate_svix_auth_url
@@ -95,7 +93,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.webhooks.generate_svix_auth_url()
 
@@ -117,7 +114,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400                | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError53 | 400                       | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |

@@ -22,7 +22,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.allowlist_identifiers.list()
 
 if res is not None:
@@ -43,10 +42,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 401,402            | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError36 | 401,402                   | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## create
@@ -61,7 +60,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.allowlist_identifiers.create(request={
     "identifier": "user@example.com",
@@ -87,10 +85,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,402,422        | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError37 | 400,402,422               | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## delete
@@ -105,7 +103,6 @@ from clerk_backend_api import Clerk
 s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
-
 
 res = s.allowlist_identifiers.delete(identifier_id="example_identifier_id")
 
@@ -128,7 +125,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 402,404            | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError38 | 402,404                   | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |

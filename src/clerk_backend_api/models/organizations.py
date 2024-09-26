@@ -7,17 +7,21 @@ from typing import List, TypedDict
 
 
 class OrganizationsTypedDict(TypedDict):
+    r"""A list of organizations"""
+
     data: List[OrganizationTypedDict]
     total_count: int
     r"""Total number of organizations
 
     """
-    
+
 
 class Organizations(BaseModel):
+    r"""A list of organizations"""
+
     data: List[Organization]
+
     total_count: int
     r"""Total number of organizations
 
     """
-    
