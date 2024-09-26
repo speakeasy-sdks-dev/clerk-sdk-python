@@ -9,9 +9,8 @@ from typing_extensions import NotRequired
 class CreateRedirectURLRequestBodyTypedDict(TypedDict):
     url: NotRequired[str]
     r"""The full url value prefixed with `https://` or a custom scheme e.g. `\"https://my-app.com/oauth-callback\"` or `\"my-app://oauth-callback\"`"""
-    
+
 
 class CreateRedirectURLRequestBody(BaseModel):
     url: Optional[str] = None
     r"""The full url value prefixed with `https://` or a custom scheme e.g. `\"https://my-app.com/oauth-callback\"` or `\"my-app://oauth-callback\"`"""
-    
