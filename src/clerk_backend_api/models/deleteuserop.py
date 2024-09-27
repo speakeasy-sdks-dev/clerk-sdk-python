@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class DeleteUserRequestTypedDict(TypedDict):
     user_id: str
     r"""The ID of the user to delete"""
-    
+
 
 class DeleteUserRequest(BaseModel):
-    user_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    user_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the user to delete"""
-    

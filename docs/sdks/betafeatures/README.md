@@ -22,7 +22,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 res = s.beta_features.update_instance_auth_config(request={
     "restricted_to_allowlist": False,
     "from_email_address": "noreply",
@@ -51,10 +50,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 402,422            | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError42 | 402,422                   | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## ~~update_production_instance_domain~~
@@ -76,7 +75,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 s.beta_features.update_production_instance_domain(request={
     "home_url": "https://www.example.com",
 })
@@ -94,10 +92,10 @@ s.beta_features.update_production_instance_domain(request={
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,422            | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError43 | 400,422                   | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |
 
 
 ## change_production_instance_domain
@@ -117,7 +115,6 @@ s = Clerk(
     bearer_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-
 s.beta_features.change_production_instance_domain(request={
     "home_url": "https://www.newdomain.com",
 })
@@ -135,7 +132,7 @@ s.beta_features.change_production_instance_domain(request={
 
 ### Errors
 
-| Error Object       | Status Code        | Content Type       |
-| ------------------ | ------------------ | ------------------ |
-| models.ClerkErrors | 400,422            | application/json   |
-| models.SDKError    | 4xx-5xx            | */*                |
+| Error Object              | Status Code               | Content Type              |
+| ------------------------- | ------------------------- | ------------------------- |
+| models.ClerkErrorsError50 | 400,422                   | application/json          |
+| models.SDKError           | 4xx-5xx                   | */*                       |

@@ -9,9 +9,12 @@ from typing import TypedDict
 class TestingTokenObject(str, Enum):
     TESTING_TOKEN = "testing_token"
 
+
 class TestingTokenTypedDict(TypedDict):
-    __test__ = False # pyright: ignore[reportGeneralTypeIssues]
-    
+    r"""A Testing Token"""
+
+    __test__ = False  # pyright: ignore[reportGeneralTypeIssues]
+
     object: TestingTokenObject
     token: str
     r"""The actual token. This value is meant to be passed in the `__clerk_testing_token` query parameter with requests to the Frontend API."""
@@ -19,16 +22,19 @@ class TestingTokenTypedDict(TypedDict):
     r"""Unix timestamp of the token's expiration time.
 
     """
-    
+
 
 class TestingToken(BaseModel):
+    r"""A Testing Token"""
+
     __test__ = False
-    
+
     object: TestingTokenObject
+
     token: str
     r"""The actual token. This value is meant to be passed in the `__clerk_testing_token` query parameter with requests to the Frontend API."""
+
     expires_at: int
     r"""Unix timestamp of the token's expiration time.
 
     """
-    
