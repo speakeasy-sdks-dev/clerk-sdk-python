@@ -49,11 +49,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object             | Status Code              | Content Type             |
+| Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
-| models.ClerkErrorsError3 | 400,401,403,404,422      | application/json         |
-| models.SDKError          | 4xx-5xx                  | */*                      |
-
+| models.ClerkErrorsError3 | 400, 401, 403, 404, 422  | application/json         |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
 
 ## get
 
@@ -89,11 +88,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object             | Status Code              | Content Type             |
+| Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
-| models.ClerkErrorsError4 | 400,401,403,404          | application/json         |
-| models.SDKError          | 4xx-5xx                  | */*                      |
-
+| models.ClerkErrorsError4 | 400, 401, 403, 404       | application/json         |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
 
 ## delete
 
@@ -129,11 +127,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object             | Status Code              | Content Type             |
+| Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
-| models.ClerkErrorsError5 | 400,401,403,404          | application/json         |
-| models.SDKError          | 4xx-5xx                  | */*                      |
-
+| models.ClerkErrorsError5 | 400, 401, 403, 404       | application/json         |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
 
 ## update
 
@@ -171,7 +168,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object             | Status Code              | Content Type             |
+| Error Type               | Status Code              | Content Type             |
 | ------------------------ | ------------------------ | ------------------------ |
-| models.ClerkErrorsError6 | 400,401,403,404          | application/json         |
-| models.SDKError          | 4xx-5xx                  | */*                      |
+| models.ClerkErrorsError6 | 400, 401, 403, 404       | application/json         |
+| models.SDKError          | 4XX, 5XX                 | \*/\*                    |

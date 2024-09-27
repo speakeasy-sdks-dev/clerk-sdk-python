@@ -67,11 +67,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError63 | 400,403,404,422           | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError63 | 400, 403, 404, 422        | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## list
 
@@ -120,11 +119,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError64 | 400,404                   | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError64 | 400, 404                  | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## create_bulk
 
@@ -182,11 +180,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError65 | 400,403,404,422           | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError65 | 400, 403, 404, 422        | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## ~~list_pending~~
 
@@ -235,11 +232,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError66 | 400,404                   | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError66 | 400, 404                  | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## get
 
@@ -276,11 +272,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError67 | 400,403,404               | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError67 | 400, 403, 404             | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## revoke
 
@@ -322,7 +317,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError68 | 400,403,404               | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
+| models.ClerkErrorsError68 | 400, 403, 404             | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |

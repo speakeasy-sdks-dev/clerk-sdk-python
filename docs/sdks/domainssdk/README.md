@@ -44,10 +44,9 @@ if res is not None:
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 4xx-5xx         | */*             |
-
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## add
 
@@ -91,11 +90,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError46 | 400,402,422               | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError46 | 400, 402, 422             | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## delete
 
@@ -132,11 +130,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError47 | 403,404                   | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError47 | 403, 404                  | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## update
 
@@ -181,7 +178,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError48 | 400,404,422               | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
+| models.ClerkErrorsError48 | 400, 404, 422             | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |

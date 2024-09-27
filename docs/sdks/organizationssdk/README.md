@@ -55,11 +55,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError57 | 400,403,422               | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError57 | 400, 403, 422             | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## create
 
@@ -110,11 +109,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError58 | 400,403,422               | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError58 | 400, 403, 422             | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## get
 
@@ -150,11 +148,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError59 | 403,404                   | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError59 | 403, 404                  | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## update
 
@@ -196,11 +193,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError60 | 402,404,422               | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError60 | 402, 404, 422             | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## delete
 
@@ -238,11 +234,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
 | models.ClerkErrorsError61 | 404                       | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## merge_metadata
 
@@ -283,11 +278,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError61 | 400,401,404,422           | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError61 | 400, 401, 404, 422        | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## upload_logo
 
@@ -332,11 +326,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError62 | 400,403,404,413           | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError62 | 400, 403, 404, 413        | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## delete_logo
 
@@ -372,7 +365,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
 | models.ClerkErrorsError63 | 404                       | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |

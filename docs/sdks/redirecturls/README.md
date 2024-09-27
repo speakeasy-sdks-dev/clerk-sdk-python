@@ -43,10 +43,9 @@ if res is not None:
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 4xx-5xx         | */*             |
-
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## create
 
@@ -84,11 +83,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
-| models.ClerkErrorsError75 | 400,422                   | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.ClerkErrorsError75 | 400, 422                  | application/json          |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## get
 
@@ -124,11 +122,10 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
 | models.ClerkErrorsError76 | 404                       | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
-
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
 
 ## delete
 
@@ -164,7 +161,7 @@ if res is not None:
 
 ### Errors
 
-| Error Object              | Status Code               | Content Type              |
+| Error Type                | Status Code               | Content Type              |
 | ------------------------- | ------------------------- | ------------------------- |
 | models.ClerkErrorsError77 | 404                       | application/json          |
-| models.SDKError           | 4xx-5xx                   | */*                       |
+| models.SDKError           | 4XX, 5XX                  | \*/\*                     |
