@@ -8,14 +8,13 @@ from typing_extensions import NotRequired
 
 class VerifyClientRequestBodyTypedDict(TypedDict):
     r"""Parameters."""
-    
+
     token: NotRequired[str]
     r"""A JWT Token that represents the active client."""
-    
+
 
 class VerifyClientRequestBody(BaseModel):
     r"""Parameters."""
-    
+
     token: Optional[str] = None
     r"""A JWT Token that represents the active client."""
-    
