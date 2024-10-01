@@ -10,9 +10,10 @@ from typing_extensions import Annotated
 class RevokeActorTokenRequestTypedDict(TypedDict):
     actor_token_id: str
     r"""The ID of the actor token to be revoked."""
-    
+
 
 class RevokeActorTokenRequest(BaseModel):
-    actor_token_id: Annotated[str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))]
+    actor_token_id: Annotated[
+        str, FieldMetadata(path=PathParamMetadata(style="simple", explode=False))
+    ]
     r"""The ID of the actor token to be revoked."""
-    
