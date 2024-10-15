@@ -6,11 +6,11 @@ from clerk_backend_api._hooks import HookContext
 from clerk_backend_api.types import BaseModel, OptionalNullable, UNSET
 from typing import Any, List, Optional, Union, cast
 
+
 class RedirectUrls(BaseSDK):
-    
-    
     def list(
-        self, *,
+        self,
+        *,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -27,7 +27,7 @@ class RedirectUrls(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
         req = self.build_request(
@@ -44,40 +44,48 @@ class RedirectUrls(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="ListRedirectURLs", oauth2_scopes=[], security_source=self.sdk_configuration.security),
-            request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[List[models.RedirectURL]])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
 
-    
-    
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                operation_id="ListRedirectURLs",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[List[models.RedirectURL]]
+            )
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
     async def list_async(
-        self, *,
+        self,
+        *,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -94,10 +102,10 @@ class RedirectUrls(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        req = self.build_request(
+        req = self.build_request_async(
             method="GET",
             path="/redirect_urls",
             base_url=base_url,
@@ -111,41 +119,54 @@ class RedirectUrls(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="ListRedirectURLs", oauth2_scopes=[], security_source=self.sdk_configuration.security),
-            request=req,
-            error_status_codes=["4XX","5XX"],
-            retry_config=retry_config
-        )
-        
-        if utils.match_response(http_res, "200", "application/json"):
-            return utils.unmarshal_json(http_res.text, Optional[List[models.RedirectURL]])
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
 
-    
-    
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                operation_id="ListRedirectURLs",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
+            request=req,
+            error_status_codes=["4XX", "5XX"],
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return utils.unmarshal_json(
+                http_res.text, Optional[List[models.RedirectURL]]
+            )
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
+
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
     def create(
-        self, *,
-        request: Optional[Union[models.CreateRedirectURLRequestBody, models.CreateRedirectURLRequestBodyTypedDict]] = None,
+        self,
+        *,
+        request: Optional[
+            Union[
+                models.CreateRedirectURLRequestBody,
+                models.CreateRedirectURLRequestBodyTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -163,14 +184,16 @@ class RedirectUrls(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
-        if not isinstance(request, BaseModel) and request is not None:
-            request = utils.unmarshal(request, models.CreateRedirectURLRequestBody)
-        request = cast(models.CreateRedirectURLRequestBody, request)
-        
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, Optional[models.CreateRedirectURLRequestBody]
+            )
+        request = cast(Optional[models.CreateRedirectURLRequestBody], request)
+
         req = self.build_request(
             method="POST",
             path="/redirect_urls",
@@ -183,48 +206,65 @@ class RedirectUrls(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, True, "json", Optional[models.CreateRedirectURLRequestBody]),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request,
+                False,
+                True,
+                "json",
+                Optional[models.CreateRedirectURLRequestBody],
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="CreateRedirectURL", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="CreateRedirectURL",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["400", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.RedirectURL])
-        if utils.match_response(http_res, ["400","422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["400", "422"], "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError75Data)
+            raise models.ClerkErrorsError75(data=data)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
     async def create_async(
-        self, *,
-        request: Optional[Union[models.CreateRedirectURLRequestBody, models.CreateRedirectURLRequestBodyTypedDict]] = None,
+        self,
+        *,
+        request: Optional[
+            Union[
+                models.CreateRedirectURLRequestBody,
+                models.CreateRedirectURLRequestBodyTypedDict,
+            ]
+        ] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -242,15 +282,17 @@ class RedirectUrls(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
-        if not isinstance(request, BaseModel) and request is not None:
-            request = utils.unmarshal(request, models.CreateRedirectURLRequestBody)
-        request = cast(models.CreateRedirectURLRequestBody, request)
-        
-        req = self.build_request(
+
+        if not isinstance(request, BaseModel):
+            request = utils.unmarshal(
+                request, Optional[models.CreateRedirectURLRequestBody]
+            )
+        request = cast(Optional[models.CreateRedirectURLRequestBody], request)
+
+        req = self.build_request_async(
             method="POST",
             path="/redirect_urls",
             base_url=base_url,
@@ -262,47 +304,59 @@ class RedirectUrls(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(request, False, True, "json", Optional[models.CreateRedirectURLRequestBody]),
+            get_serialized_body=lambda: utils.serialize_request_body(
+                request,
+                False,
+                True,
+                "json",
+                Optional[models.CreateRedirectURLRequestBody],
+            ),
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="CreateRedirectURL", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="CreateRedirectURL",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["400","422","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["400", "422", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.RedirectURL])
-        if utils.match_response(http_res, ["400","422"], "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+        if utils.match_response(http_res, ["400", "422"], "application/json"):
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError75Data)
+            raise models.ClerkErrorsError75(data=data)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
     def get(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -321,14 +375,14 @@ class RedirectUrls(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.GetRedirectURLRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="GET",
             path="/redirect_urls/{id}",
@@ -343,44 +397,50 @@ class RedirectUrls(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="GetRedirectURL", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="GetRedirectURL",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.RedirectURL])
         if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError76Data)
+            raise models.ClerkErrorsError76(data=data)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
     async def get_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -399,15 +459,15 @@ class RedirectUrls(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.GetRedirectURLRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="GET",
             path="/redirect_urls/{id}",
             base_url=base_url,
@@ -421,44 +481,50 @@ class RedirectUrls(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="GetRedirectURL", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="GetRedirectURL",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.RedirectURL])
         if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError76Data)
+            raise models.ClerkErrorsError76(data=data)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
     def delete(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -477,14 +543,14 @@ class RedirectUrls(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.DeleteRedirectURLRequest(
             id=id,
         )
-        
+
         req = self.build_request(
             method="DELETE",
             path="/redirect_urls/{id}",
@@ -499,44 +565,50 @@ class RedirectUrls(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = self.do_request(
-            hook_ctx=HookContext(operation_id="DeleteRedirectURL", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="DeleteRedirectURL",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.DeletedObject])
         if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError77Data)
+            raise models.ClerkErrorsError77(data=data)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
 
-    
-    
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = utils.stream_to_text(http_res)
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
+
     async def delete_async(
-        self, *,
+        self,
+        *,
         id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -555,15 +627,15 @@ class RedirectUrls(BaseSDK):
         url_variables = None
         if timeout_ms is None:
             timeout_ms = self.sdk_configuration.timeout_ms
-        
+
         if server_url is not None:
             base_url = server_url
-        
+
         request = models.DeleteRedirectURLRequest(
             id=id,
         )
-        
-        req = self.build_request(
+
+        req = self.build_request_async(
             method="DELETE",
             path="/redirect_urls/{id}",
             base_url=base_url,
@@ -577,38 +649,43 @@ class RedirectUrls(BaseSDK):
             security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
-        
+
         if retries == UNSET:
             if self.sdk_configuration.retry_config is not UNSET:
                 retries = self.sdk_configuration.retry_config
 
         retry_config = None
         if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, [
-                "429",
-                "500",
-                "502",
-                "503",
-                "504"
-            ])                
-        
+            retry_config = (retries, ["429", "500", "502", "503", "504"])
+
         http_res = await self.do_request_async(
-            hook_ctx=HookContext(operation_id="DeleteRedirectURL", oauth2_scopes=[], security_source=self.sdk_configuration.security),
+            hook_ctx=HookContext(
+                operation_id="DeleteRedirectURL",
+                oauth2_scopes=[],
+                security_source=self.sdk_configuration.security,
+            ),
             request=req,
-            error_status_codes=["404","4XX","5XX"],
-            retry_config=retry_config
+            error_status_codes=["404", "4XX", "5XX"],
+            retry_config=retry_config,
         )
-        
+
         data: Any = None
         if utils.match_response(http_res, "200", "application/json"):
             return utils.unmarshal_json(http_res.text, Optional[models.DeletedObject])
         if utils.match_response(http_res, "404", "application/json"):
-            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsData)
-            raise models.ClerkErrors(data=data)
-        if utils.match_response(http_res, ["4XX","5XX"], "*"):
-            raise models.SDKError("API error occurred", http_res.status_code, http_res.text, http_res)
-        
-        content_type = http_res.headers.get("Content-Type")
-        raise models.SDKError(f"Unexpected response received (code: {http_res.status_code}, type: {content_type})", http_res.status_code, http_res.text, http_res)
+            data = utils.unmarshal_json(http_res.text, models.ClerkErrorsError77Data)
+            raise models.ClerkErrorsError77(data=data)
+        if utils.match_response(http_res, ["4XX", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise models.SDKError(
+                "API error occurred", http_res.status_code, http_res_text, http_res
+            )
 
-    
+        content_type = http_res.headers.get("Content-Type")
+        http_res_text = await utils.stream_to_text_async(http_res)
+        raise models.SDKError(
+            f"Unexpected response received (code: {http_res.status_code}, type: {content_type})",
+            http_res.status_code,
+            http_res_text,
+            http_res,
+        )
