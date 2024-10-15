@@ -431,10 +431,10 @@ By default, an API error will raise a models.SDKError exception, which has the f
 
 When custom error responses are specified for an operation, the SDK may also raise their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `verify_async` method may raise the following exceptions:
 
-| Error Type               | Status Code              | Content Type             |
-| ------------------------ | ------------------------ | ------------------------ |
-| models.ClerkErrorsError1 | 400, 401, 404            | application/json         |
-| models.SDKError          | 4XX, 5XX                 | \*/\*                    |
+| Error Type               | Status Code   | Content Type     |
+| ------------------------ | ------------- | ---------------- |
+| models.ClerkErrorsError1 | 400, 401, 404 | application/json |
+| models.SDKError          | 4XX, 5XX      | \*/\*            |
 
 ### Example
 
@@ -596,9 +596,9 @@ s = Clerk(async_client=CustomClient(httpx.AsyncClient()))
 
 This SDK supports the following security scheme globally:
 
-| Name          | Type          | Scheme        |
-| ------------- | ------------- | ------------- |
-| `bearer_auth` | http          | HTTP Bearer   |
+| Name          | Type | Scheme      |
+| ------------- | ---- | ----------- |
+| `bearer_auth` | http | HTTP Bearer |
 
 To authenticate with the API the `bearer_auth` parameter must be set when initializing the SDK client instance. For example:
 ```python
